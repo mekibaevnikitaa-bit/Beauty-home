@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Салон красоты Beauty Home | Экибастуз</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Beauty <span>Home</span></a>
+            <nav class="nav">
+                <a href="#about">О нас</a>
+                <a href="#services">Услуги</a>
+                <a href="#booking">Запись</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a href="#booking" class="btn btn-header">Записаться</a>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Уют и красота в вашем городе</h1>
+            <p>Премиальный уход и забота о вашей красоте в самом центре Экибастуза.</p>
+            <a href="#booking" class="btn btn-primary">Онлайн-запись</a>
+        </div>
+    </section>
+
+    <!-- Блок "О нас" -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">О салоне Beauty Home</h2>
+            <p class="about-text">
+                Добро пожаловать в <strong>Beauty Home</strong> — уютное пространство красоты в Экибастузе. 
+                Мы создаем атмосферу, в которой вы сможете расслабиться и доверить свой образ профессионалам. 
+                В своей работе мы используем только сертифицированные материалы и современные техники.
+            </p>
+        </div>
+    </section>
+
+    <!-- Услуги и цены -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <h3>Парикмахерский зал</h3>
+                    <ul class="price-list">
+                        <li><span>Женская стрижка</span> <span>от 4 000 ₸</span></li>
+                        <li><span>Мужская стрижка</span> <span>от 3 000 ₸</span></li>
+                        <li><span>Сложное окрашивание</span> <span>от 15 000 ₸</span></li>
+                        <li><span>Уходовые процедуры</span> <span>от 8 000 ₸</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Ногтевой сервис</h3>
+                    <ul class="price-list">
+                        <li><span>Маникюр с покрытием</span> <span>от 6 000 ₸</span></li>
+                        <li><span>Педикюр комплексный</span> <span>от 8 000 ₸</span></li>
+                        <li><span>Наращивание ногтей</span> <span>от 10 000 ₸</span></li>
+                        <li><span>Дизайн (1 ноготь)</span> <span>от 300 ₸</span></li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Оформление взгляда</h3>
+                    <ul class="price-list">
+                        <li><span>Коррекция и окрашивание бровей</span> <span>от 3 500 ₸</span></li>
+                        <li><span>Ламинирование бровей / ресниц</span> <span>от 7 000 ₸</span></li>
+                        <li><span>Наращивание ресниц (Классика)</span> <span>от 7 000 ₸</span></li>
+                        <li><span>Наращивание ресниц (2D / 3D)</span> <span>от 8 500 ₸</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Онлайн-запись -->
+    <section id="booking" class="section booking">
+        <div class="container">
+            <div class="booking-card">
+                <h2 class="section-title">Быстрая запись</h2>
+                <p>Заполните форму, и мы свяжемся с вами в WhatsApp для подтверждения времени.</p>
+                
+                <form id="appointment-form" class="booking-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="+7 (700) 000-00-00" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" required>
+                            <option value="" disabled selected>Выберите услугу</option>
+                            <option value="Парикмахерские услуги">Парикмахерские услуги</option>
+                            <option value="Маникюр / Педикюр">Маникюр / Педикюр</option>
+                            <option value="Брови / Ресницы">Оформление бровей и ресниц</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Отправить в WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="section contacts">
+        <div class="container contacts-grid">
+            <div class="contacts-info">
+                <h2 class="section-title">Контакты</h2>
+                <p><strong>Город:</strong> Экибастуз</p>
+                <p><strong>Адрес:</strong> ул. Машхур Жусупа, 40 <em>(укажите ваш точный адрес)</em></p>
+                <p><strong>Телефон:</strong> <a href="tel:+77770000000">+7 (777) 000-00-00</a></p>
+                <p><strong>График работы:</strong> Ежедневно с 10:00 до 20:00</p>
+                
+                <div class="socials">
+                    <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
+                    <a href="https://wa.me/77770000000" target="_blank" class="social-link">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Beauty Home (Экибастуз). Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
