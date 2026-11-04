@@ -1,88 +1,80 @@
 /* ==========================================================
-   Стиль "Мягкий Нюдовый Минимализм" для Beauty Home
+   Стили Beauty Home (В стиле референса: Сетка с картинами)
    ========================================================== */
 
-/* 1. Общие настройки и сброс */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth; /* Плавная прокрутка */
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: #4a4a4a; /* Тёмно-серый, мягче чем чистый чёрный */
-    line-height: 1.7;
-    background-color: #fdfaf6; /* Очень светлый бежевый фон */
+    color: #333333;
+    line-height: 1.6;
+    background-color: #f7f5f2;
 }
 
-/* Изменяем стиль выделения текста */
-::selection {
-    background-color: rgba(212, 163, 115, 0.2);
-    color: #bc8a5f;
-}
-
-/* Настройка шрифтов заголовков */
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    font-weight: 600;
 }
 
 .container {
     max-width: 1140px;
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 0 20px;
 }
 
-/* 2. Кнопки (современный плоский дизайн с мягким ховером) */
+/* Кнопки */
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 32px;
-    border-radius: 50px; /* Полностью круглые края */
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 6px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
     cursor: pointer;
     border: none;
-    outline: none;
+    text-align: center;
 }
 
 .btn-primary {
-    background-color: #d4a373; /* Основной нюдовый цвет */
+    background-color: #cbb29a; /* Мягкий бежево-коричневый как на скрине */
     color: #ffffff;
-    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #bc8a5f;
-    transform: translateY(-2px); /* Легкое всплытие */
-    box-shadow: 0 6px 20px rgba(188, 138, 95, 0.4);
+    background-color: #b5987d;
 }
 
 .btn-header {
-    background-color: transparent;
-    border: 2px solid #d4a373;
-    color: #d4a373;
-    padding: 10px 24px;
+    border: 1px solid #cbb29a;
+    color: #8c735c;
+    padding: 8px 20px;
 }
 
 .btn-header:hover {
-    background-color: #d4a373;
+    background-color: #cbb29a;
     color: #ffffff;
 }
 
-/* 3. Шапка сайта (Эффект "Матового стекла") */
+.btn-card {
+    background-color: #cbb29a;
+    color: #ffffff;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-card:hover {
+    background-color: #b5987d;
+}
+
+/* Шапка */
 .header {
-    background-color: rgba(255, 255, 255, 0.85); /* Полупрозрачный фон */
-    backdrop-filter: blur(10px); /* Размытие фона за шапкой */
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -92,165 +84,144 @@ h1, h2, h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px;
+    padding: 15px 20px;
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: #222;
     text-decoration: none;
-    letter-spacing: -1px;
 }
 
 .logo span {
-    color: #d4a373;
-    font-weight: 400;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
+    color: #cbb29a;
 }
 
 .nav a {
-    margin: 0 18px;
+    margin: 0 12px;
     text-decoration: none;
     color: #555;
-    font-weight: 500;
-    font-size: 15px;
-    position: relative;
-    padding-bottom: 4px;
-}
-
-/* Анимированное подчеркивание при наведении */
-.nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: #d4a373;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+    font-size: 14px;
 }
 
 .nav a:hover {
-    color: #d4a373;
+    color: #cbb29a;
 }
 
-.nav a:hover::after {
-    width: 100%;
-}
-
-/* 4. Главный баннер (Hero) */
+/* Баннер */
 .hero {
-    background: linear-gradient(135deg, rgba(253,250,246,0.9) 0%, rgba(253,250,246,0.6) 100%), 
-                url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    height: 80vh;
-    display: flex;
-    align-items: center;
+    background: #f1ede8;
+    padding: 80px 0;
     text-align: center;
-    color: #333; /* Текст теперь тёмный на светлом фоне */
-}
-
-.hero-content {
-    max-width: 800px;
+    border-bottom: 1px solid #e8e2db;
 }
 
 .hero-content h1 {
-    font-size: 56px;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 42px;
+    color: #222;
+    margin-bottom: 15px;
 }
 
 .hero-content p {
-    font-size: 20px;
-    margin-bottom: 35px;
+    font-size: 16px;
     color: #666;
-    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto 30px;
 }
 
-/* 5. Секции (чистые отступы) */
+/* Секции */
 .section {
-    padding: 100px 0;
+    padding: 60px 0;
 }
 
 .section-title {
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 60px;
-    color: #333;
-    position: relative;
-    padding-bottom: 15px;
+    text-align: left;
+    font-size: 32px;
+    margin-bottom: 35px;
+    color: #222;
 }
 
-/* Изящная линия под заголовком */
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: #d4a373;
-    border-radius: 2px;
+/* Мастера */
+.masters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
 }
 
-/* О нас */
-.about {
-    background-color: #ffffff;
-    text-align: center;
+.master-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
-.about-text {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 19px;
-    color: #555;
-    font-weight: 300;
+.master-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
 }
 
-.about-text strong {
-    color: #bc8a5f;
+.master-info h3 {
+    font-size: 20px;
+    color: #222;
+}
+
+.master-spec {
+    display: block;
+    color: #cbb29a;
     font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
-/* Услуги (карточки с мягкой тенью) */
-.services {
-    background-color: #fdfaf6;
+.master-info p {
+    font-size: 13px;
+    color: #666;
 }
 
+/* Сетка услуг (главная фишка) */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
+    gap: 30px;
 }
 
 .service-card {
     background: #ffffff;
-    padding: 40px;
-    border-radius: 20px; /* Более скругленные края */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* Очень мягкая тень */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(212, 163, 115, 0.05); /* Почти заметная граница */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(212, 163, 115, 0.1);
+.card-img-wrap {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .card-img {
+    transform: scale(1.04);
 }
 
 .service-card h3 {
-    margin-bottom: 25px;
-    color: #bc8a5f;
-    font-size: 24px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #f3ece4;
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #222;
 }
 
 .price-list {
@@ -260,255 +231,162 @@ h1, h2, h3 {
 .price-list li {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
+    padding: 8px 0;
     border-bottom: 1px dashed #eee;
-    font-size: 16px;
-}
-
-.price-list li:last-child {
-    border-bottom: none;
-}
-
-.price-list li span:first-child {
+    font-size: 13px;
     color: #555;
-    font-weight: 400;
 }
 
-.price-list li span:last-child {
-    font-weight: 600;
-    color: #333;
-    background-color: #fdfaf6;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 15px;
+/* Обучение */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
-/* Форма записи (акцентный блок) */
+.course-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.course-card.highlight {
+    border: 2px solid #cbb29a;
+}
+
+.course-card h3 {
+    color: #8c735c;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.course-card p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.course-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+}
+
+/* Форма */
 .booking {
-    background-color: #f9f4ee;
+    background-color: #f1ede8;
 }
 
 .booking-card {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     background: #ffffff;
-    padding: 50px;
-    border-radius: 25px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.04);
-    text-align: center;
-    border: 1px solid rgba(212, 163, 115, 0.1);
-}
-
-.booking-card p {
-    margin-bottom: 35px;
-    color: #666;
-    font-size: 17px;
-    font-weight: 300;
+    padding: 35px;
+    border-radius: 12px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-group input, .form-group select {
     width: 100%;
-    padding: 16px 20px;
-    border: 1px solid #e3e3e3;
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 16px;
-    color: #333;
-    background-color: #fdfaf6;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus, .form-group select:focus {
-    border-color: #d4a373;
-    outline: none;
-    background-color: #ffffff;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
 .btn-full {
     width: 100%;
-    margin-top: 15px;
-    font-size: 16px;
 }
 
 /* Контакты */
-.contacts {
-    background-color: #ffffff;
-    text-align: center;
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
-.contacts-info p {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #555;
-    font-weight: 300;
+.map-container {
+    height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.contacts-info strong {
-    font-weight: 600;
-    color: #333;
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-.contacts-info a {
-    color: #d4a373;
+.btn-2gis {
+    display: inline-block;
+    background-color: #00aaff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
+    font-size: 13px;
+    margin-top: 15px;
 }
 
-.contacts-info a:hover {
-    color: #bc8a5f;
-}
-
-.socials {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 24px;
-    background-color: #fdfaf6;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 15px;
-    color: #bc8a5f;
-    text-decoration: none;
-    transition: all 0.3s;
-    border: 1px solid rgba(212, 163, 115, 0.1);
-}
-
-.social-link:hover {
-    background-color: #d4a373;
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-/* Подвал */
 .footer {
-    background-color: #2a2a2a; /* Чуть светлее и мягче */
-    color: #bbb;
+    background: #222;
+    color: #888;
     text-align: center;
-    padding: 30px 0;
-    font-size: 14px;
-    font-weight: 300;
+    padding: 20px 0;
+    font-size: 13px;
 }
 
-/* ==========================================================
-   Адаптивность для мобильных устройств
-   ========================================================== */
-
-@media (max-width: 992px) {
-    .hero-content h1 {
-        font-size: 48px;
-    }
-    .section-title {
-        font-size: 36px;
-    }
+/* Зеленая плавающая кнопка WhatsApp в углу */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 32px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
 }
 
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Мобильная адаптивность */
 @media (max-width: 768px) {
-    /* Настройка шапки для мобильных */
     .header-container {
         flex-direction: column;
-        gap: 12px;
-        padding: 15px;
+        gap: 10px;
     }
-    
-    .logo {
-        font-size: 24px;
-    }
-
     .nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 8px 15px;
+        gap: 6px 12px;
     }
-    
     .nav a {
         margin: 0;
-        font-size: 13px;
+        font-size: 12px;
     }
-
     .btn-header {
-        display: none; /* Скрываем кнопку в шапке на мобильных */
+        display: none;
     }
-
-    /* Настройка баннера */
-    .hero {
-        height: 60vh;
-    }
-    
     .hero-content h1 {
-        font-size: 36px;
+        font-size: 30px;
     }
-    
-    .hero-content p {
-        font-size: 17px;
+    .contacts-grid {
+        grid-template-columns: 1fr;
     }
-
-    /* Настройка секций */
-    .section {
-        padding: 70px 0;
-    }
-    
-    .section-title {
-        font-size: 32px;
-        margin-bottom: 45px;
-    }
-
-    .about-text {
-        font-size: 17px;
-    }
-
-    /* Карточки услуг */
-    .service-card {
-        padding: 30px;
-    }
-    
-    .service-card h3 {
-        font-size: 21px;
-    }
-    
-    .price-list li {
-        font-size: 15px;
-    }
-
-    /* Форма */
-    .booking-card {
-        padding: 35px 25px;
-    }
-    
-    .booking-card p {
-        font-size: 16px;
-    }
-    
-    .form-group input, .form-group select {
-        padding: 14px 18px;
-        font-size: 15px;
-    }
-
-    /* Контакты */
-    .contacts-info p {
-        font-size: 16px;
-    }
-    
-    .socials {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .social-link {
-        width: 100%;
-        justify-content: center;
-    }
-    }
-    
+   }
