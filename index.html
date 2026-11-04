@@ -1,648 +1,694 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Home — Салон Красоты в Экибастузе</title>
-    <!-- FontAwesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Standalone custom styling so it works 100% reliably everywhere */
-        :root {
-            --brand-50: #FAF7F2;
-            --brand-100: #F3ECE1;
-            --brand-200: #E6D7C3;
-            --brand-300: #D8C2A5;
-            --brand-600: #8C5A47;
-            --brand-800: #4A2B20;
-            --brand-900: #2C160E;
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Inter', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--brand-50);
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .font-serif {
-            font-family: var(--font-serif);
-        }
-
-        /* HEADER & NAVIGATION */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(250, 247, 242, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--brand-200);
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #fff;
-            border: 2px solid var(--brand-300);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--brand-800);
-            font-size: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-        }
-
-        .logo-title {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--brand-900);
-            line-height: 1.1;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-sub {
-            font-size: 10px;
-            color: var(--brand-600);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .desktop-menu {
-            display: none;
-            gap: 24px;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .desktop-menu { display: flex; }
-            .mobile-menu-btn { display: none !important; }
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--brand-900);
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: var(--brand-600);
-        }
-
-        .mobile-menu-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--brand-900);
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-dropdown {
-            display: none;
-            background: #fff;
-            border-bottom: 1px solid var(--brand-200);
-            padding: 15px 20px;
-        }
-
-        .mobile-dropdown.active {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .mobile-dropdown a {
-            text-decoration: none;
-            color: var(--brand-900);
-            font-size: 16px;
-            font-weight: 500;
-            padding: 6px 0;
-            border-bottom: 1px dashed var(--brand-100);
-        }
-
-        /* BUTTONS */
-        .btn-primary {
-            background: var(--brand-800);
-            color: #fff;
-            padding: 12px 26px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(74, 43, 32, 0.15);
-        }
-
-        .btn-primary:hover {
-            background: var(--brand-900);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: #fff;
-            color: var(--brand-900);
-            padding: 12px 26px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            border: 1px solid var(--brand-300);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--brand-100);
-        }
-
-        /* LAYOUT SECTIONS */
-        section {
-            padding: 70px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-section {
-            padding-top: 130px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .hero-section {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--brand-100);
-            color: var(--brand-800);
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .hero-title {
-            font-family: var(--font-serif);
-            font-size: 36px;
-            line-height: 1.2;
-            color: var(--brand-900);
-            margin-bottom: 15px;
-        }
-
-        @media (min-width: 768px) {
-            .hero-title { font-size: 52px; }
-        }
-
-        .hero-desc {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 25px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 24px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        /* SECTION TITLES */
-        .section-header {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-sub {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--brand-600);
-            margin-bottom: 6px;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 32px;
-            color: var(--brand-900);
-        }
-
-        /* SERVICES LIST */
-        .tabs-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .tab-btn {
-            background: #fff;
-            color: var(--brand-800);
-            border: 1px solid var(--brand-200);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .tab-btn.active {
-            background: var(--brand-800);
-            color: #fff;
-            border-color: var(--brand-800);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .services-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid var(--brand-100);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-
-        .service-name {
-            font-family: var(--font-serif);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--brand-900);
-        }
-
-        .service-desc {
-            font-size: 12px;
-            color: #777;
-            margin-top: 4px;
-        }
-
-        .service-price {
-            font-weight: 700;
-            color: var(--brand-800);
-            font-size: 15px;
-            text-align: right;
-        }
-
-        /* MASTERS CARDS */
-        .masters-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        @media (min-width: 640px) {
-            .masters-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (min-width: 1024px) {
-            .masters-grid { grid-template-columns: 1fr 1fr 1fr; }
-        }
-
-        .master-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--brand-100);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .master-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        .master-img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            object-position: top;
-            background-color: var(--brand-100);
-        }
-
-        .master-info {
-            padding: 20px;
-        }
-
-        .master-name {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--brand-900);
-        }
-
-        .master-role {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: var(--brand-600);
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .master-desc {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.4;
-        }
-
-        /* FLOATING SOCIAL BUTTONS */
-        .floating-buttons {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 99;
-        }
-
-        .float-btn {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-            transition: transform 0.2s;
-        }
-
-        .float-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .float-wa { background: #25D366; }
-        .float-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-
-        /* MODAL */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-body {
-            background: #fff;
-            padding: 30px;
-            border-radius: 24px;
-            width: 100%;
-            max-width: 480px;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #444;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .form-control:focus {
-            border-color: var(--brand-600);
-        }
-
-        .hidden { display: none !important; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Home — Салон Красоты в Экибастузе</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--brand-50: #FAF7F2;
+--brand-100: #F3ECE1;
+--brand-200: #E6D7C3;
+--brand-300: #D8C2A5;
+--brand-600: #8C5A47;
+--brand-800: #4A2B20;
+--brand-900: #2C160E;
+--font-serif: 'Cormorant Garamond', Georgia, serif;
+--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+font-family: var(--font-sans);
+background-color: var(--brand-50);
+color: #333;
+line-height: 1.6;
+overflow-x: hidden;
+}
+.font-serif {
+font-family: var(--font-serif);
+}
+/* HEADER & NAVIGATION */
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background: rgba(250, 247, 242, 0.98);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid var(--brand-200);
+z-index: 1000;
+}
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 12px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.logo-box {
+display: flex;
+align-items: center;
+gap: 12px;
+text-decoration: none;
+}
+.logo-circle {
+width: 42px;
+height: 42px;
+border-radius: 50%;
+background: #fff;
+border: 2px solid var(--brand-300);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--brand-800);
+font-size: 18px;
+font-weight: bold;
+}
+.logo-title {
+font-family: var(--font-serif);
+font-size: 20px;
+font-weight: 700;
+color: var(--brand-900);
+line-height: 1.1;
+}
+.logo-sub {
+font-size: 10px;
+color: var(--brand-600);
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+.desktop-menu {
+display: none;
+gap: 20px;
+align-items: center;
+}
+@media (min-width: 768px) {
+.desktop-menu { display: flex; }
+.mobile-menu-btn { display: none !important; }
+}
+.nav-link {
+text-decoration: none;
+color: var(--brand-900);
+font-size: 14px;
+font-weight: 500;
+}
+.mobile-menu-btn {
+background: var(--brand-100);
+border: 1px solid var(--brand-300);
+border-radius: 8px;
+font-size: 20px;
+color: var(--brand-900);
+cursor: pointer;
+padding: 6px 12px;
+}
+.mobile-dropdown {
+display: none;
+background: #fff;
+border-bottom: 1px solid var(--brand-200);
+padding: 15px 20px;
+}
+.mobile-dropdown.active {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+.mobile-dropdown a {
+text-decoration: none;
+color: var(--brand-900);
+font-size: 16px;
+font-weight: 500;
+padding: 8px 0;
+border-bottom: 1px dashed var(--brand-100);
+}
+/* BUTTONS */
+.btn-primary {
+background: var(--brand-800);
+color: #fff;
+padding: 12px 24px;
+border-radius: 30px;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+border: none;
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+box-shadow: 0 4px 12px rgba(74, 43, 32, 0.15);
+}
+.btn-secondary {
+background: #fff;
+color: var(--brand-900);
+padding: 12px 24px;
+border-radius: 30px;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+border: 1px solid var(--brand-300);
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+/* SECTIONS */
+section {
+padding: 50px 20px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.hero-section {
+padding-top: 120px;
+display: grid;
+grid-template-columns: 1fr;
+gap: 30px;
+align-items: center;
+}
+@media (min-width: 768px) {
+.hero-section { grid-template-columns: 1fr 1fr; }
+}
+.badge {
+display: inline-block;
+background: var(--brand-100);
+color: var(--brand-800);
+padding: 6px 14px;
+border-radius: 20px;
+font-size: 12px;
+font-weight: 600;
+margin-bottom: 15px;
+}
+.hero-title {
+font-family: var(--font-serif);
+font-size: 34px;
+line-height: 1.2;
+color: var(--brand-900);
+margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+.hero-title { font-size: 48px; }
+}
+.hero-desc {
+color: #666;
+font-size: 15px;
+margin-bottom: 25px;
+}
+.hero-buttons {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+@media (min-width: 480px) {
+.hero-buttons { flex-direction: row; }
+}
+.hero-image {
+width: 100%;
+height: 320px;
+object-fit: cover;
+border-radius: 20px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+/* SECTION TITLES */
+.section-header {
+text-align: center;
+margin-bottom: 35px;
+}
+.section-sub {
+font-size: 12px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: var(--brand-600);
+margin-bottom: 6px;
+}
+.section-title {
+font-family: var(--font-serif);
+font-size: 30px;
+color: var(--brand-900);
+}
+/* SERVICES LIST */
+.tabs-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 8px;
+margin-bottom: 25px;
+}
+.tab-btn {
+background: #fff;
+color: var(--brand-800);
+border: 1px solid var(--brand-200);
+padding: 8px 16px;
+border-radius: 20px;
+font-size: 13px;
+cursor: pointer;
+}
+.tab-btn.active {
+background: var(--brand-800);
+color: #fff;
+border-color: var(--brand-800);
+}
+.services-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 15px;
+}
+@media (min-width: 768px) {
+.services-grid { grid-template-columns: 1fr 1fr; }
+}
+.service-card {
+background: #fff;
+padding: 18px;
+border-radius: 16px;
+border: 1px solid var(--brand-100);
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+.service-name {
+font-family: var(--font-serif);
+font-size: 18px;
+font-weight: 700;
+color: var(--brand-900);
+}
+.service-desc {
+font-size: 12px;
+color: #777;
+margin-top: 2px;
+}
+.service-price {
+font-weight: 700;
+color: var(--brand-800);
+font-size: 15px;
+text-align: right;
+}
+/* MASTERS CARDS */
+.masters-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 20px;
+}
+@media (min-width: 640px) {
+.masters-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+.masters-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+.master-card {
+background: #fff;
+border-radius: 20px;
+overflow: hidden;
+border: 1px solid var(--brand-200);
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+cursor: pointer;
+transition: transform 0.2s;
+}
+.master-card:active {
+transform: scale(0.98);
+}
+.master-img {
+width: 100%;
+height: 300px;
+object-fit: cover;
+object-position: top;
+background-color: var(--brand-100);
+display: block;
+}
+.master-info {
+padding: 18px;
+}
+.master-name {
+font-family: var(--font-serif);
+font-size: 22px;
+font-weight: 700;
+color: var(--brand-900);
+}
+.master-role {
+font-size: 11px;
+font-weight: 700;
+text-transform: uppercase;
+color: var(--brand-600);
+letter-spacing: 1px;
+margin-bottom: 6px;
+}
+.master-desc {
+font-size: 13px;
+color: #666;
+line-height: 1.4;
+}
+.click-hint {
+display: inline-block;
+margin-top: 10px;
+font-size: 12px;
+color: var(--brand-800);
+font-weight: 600;
+text-decoration: underline;
+}
+/* FLOATING SOCIAL BUTTONS */
+.floating-buttons {
+position: fixed;
+bottom: 20px;
+right: 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+z-index: 999;
+}
+.float-btn {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+font-size: 22px;
+text-decoration: none;
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.float-wa { background: #25D366; }
+.float-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+/* MODAL */
+.modal-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.7);
+display: none;
+align-items: center;
+justify-content: center;
+padding: 20px;
+z-index: 2000;
+}
+.modal-overlay.active {
+display: flex;
+}
+.modal-body {
+background: #fff;
+padding: 25px;
+border-radius: 20px;
+width: 100%;
+max-width: 440px;
+position: relative;
+}
+.close-modal {
+position: absolute;
+top: 15px;
+right: 15px;
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+color: #888;
+}
+.form-group {
+margin-bottom: 12px;
+}
+.form-group label {
+display: block;
+font-size: 12px;
+font-weight: 600;
+margin-bottom: 4px;
+color: #444;
+}
+.form-control {
+width: 100%;
+padding: 10px 12px;
+border: 1px solid #ccc;
+border-radius: 10px;
+font-size: 14px;
+}
+.hidden { display: none !important; }
+</style>
 </head>
 <body>
-
-    <!-- HEADER / NAVIGATION -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo-box">
-                <div class="logo-circle">
-                    <i class="fa-solid fa-crown"></i>
-                </div>
-                <div>
-                    <div class="logo-title">BEAUTY HOME</div>
-                    <div class="logo-sub">Сұлулық салоны • Экибастуз</div>
-                </div>
-            </a>
-
-            <!-- Desktop Links -->
-            <div class="desktop-menu">
-                <a href="#about" class="nav-link">О нас</a>
-                <a href="#services" class="nav-link">Услуги и цены</a>
-                <a href="#masters" class="nav-link">Мастера</a>
-                <a href="#contacts" class="nav-link">Контакты</a>
-                <button onclick="openBookingModal()" class="btn-primary">
-                    <i class="fa-solid fa-calendar-check"></i> Записаться
-                </button>
-            </div>
-
-            <!-- Mobile menu icon -->
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile dropdown navigation -->
-        <div id="mobile-menu" class="mobile-dropdown">
-            <a href="#about" onclick="toggleMobileMenu()">О нас</a>
-            <a href="#services" onclick="toggleMobileMenu()">Услуги и цены</a>
-            <a href="#masters" onclick="toggleMobileMenu()">Мастера салона</a>
-            <a href="#contacts" onclick="toggleMobileMenu()">Контакты и адрес</a>
-            <button onclick="openBookingModal(); toggleMobileMenu();" class="btn-primary" style="width: 100%; margin-top: 10px;">
-                Записаться онлайн
-            </button>
-        </div>
-    </header>
-
-    <!-- MAIN PAGE CONTENT -->
-    <main id="main-content">
-        
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-            <div>
-                <span class="badge"><i class="fa-solid fa-sparkles"></i> Салон красоты в Экибастузе</span>
-                <h1 class="hero-title">Ваша естественная эстетика и безупречный уход</h1>
-                <p class="hero-desc">Уютная атмосфера, лучшие мастера и премиальный сервис. Мы подчеркнем вашу индивидуальность и подарим минуты истинного наслаждения.</p>
-                <div class="hero-buttons">
-                    <button onclick="openBookingModal()" class="btn-primary">Записаться на процедуру</button>
-                    <a href="https://2gis.kz/ekibastuz/geo/70000001084557363" target="_blank" class="btn-secondary">
-                        <i class="fa-solid fa-location-dot" style="color: var(--brand-600);"></i> Мы на 2GIS
-                    </a>
-                </div>
-            </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Beauty Home" class="hero-image">
-            </div>
-        </section>
-
-        <!-- ABOUT SECTION -->
-        <section id="about">
-            <div class="section-header">
-                <div class="section-sub">О салонe</div>
-                <h2 class="section-title">Beauty Home — Ваша территория красоты</h2>
-                <p style="max-width: 650px; margin: 15px auto 0; color: #666; font-size: 14px;">
-                    Мы находимся в г. Экибастуз по адресу ул. Машхур Жусупа, 55. Создаем комфорт, красоту и настроение с 2008 года. 
-                </p>
-            </div>
-        </section>
-
-        <!-- SERVICES SECTION -->
-        <section id="services">
-            <div class="section-header">
-                <div class="section-sub">Услуги & Прайс</div>
-                <h2 class="section-title">Что мы предлагаем</h2>
-            </div>
-
-            <div class="tabs-container">
-                <button class="tab-btn active" onclick="filterServices('all', this)">Все услуги</button>
-                <button class="tab-btn" onclick="filterServices('nails', this)">Ногти</button>
-                <button class="tab-btn" onclick="filterServices('hair', this)">Уход за волосами</button>
-                <button class="tab-btn" onclick="filterServices('lashes', this)">Ресницы</button>
-                <button class="tab-btn" onclick="filterServices('depilation', this)">Шугаринг</button>
-                <button class="tab-btn" onclick="filterServices('massage', this)">Массаж</button>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card nails">
-                    <div>
-                        <div class="service-name">Маникюр с покрытием Gel-Lak</div>
-                        <div class="service-desc">Выравнивание + покрытие от мастеров Ринаты и Гульхан</div>
-                    </div>
-                    <div>
-                        <div class="service-price">от 6 000 ₸</div>
-                        <button onclick="openBookingModal('Маникюр')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
-                    </div>
-                </div>
-
-                <div class="service-card nails">
-                    <div>
-                        <div class="service-name">Smart-Педикюр</div>
-                        <div class="service-desc">Обработка стоп, пальцев и покрытие</div>
-                    </div>
-                    <div>
-                        <div class="service-price">от 8 000 ₸</div>
-                        <button onclick="openBookingModal('Педикюр')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
-                    </div>
-                </div>
-
-                <div class="service-card hair">
-                    <div>
-                        <div class="service-name">СПА-уход & Восстановление волос</div>
-                        <div class="service-desc">Глубокое восстановление от мастера Алии (без стрижки)</div>
-                    </div>
-                    <div>
-                        <div class="service-price">от 10 000 ₸</div>
-                        <button onclick="openBookingModal('Уход за волосами')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
-                    </div>
-                </div>
-
-                <div class="service-card lashes">
-                    <div>
-                        <div class="service-name">Наращивание ресниц</div>
-                        <div class="service-desc">1D / 2D / 3D Объемы от мастера Инги</div>
-                    </div>
-    
+<!-- HEADER -->
+<header>
+<div class="nav-container">
+<a href="#" class="logo-box">
+<div class="logo-circle">BH</div>
+<div>
+<div class="logo-title">BEAUTY HOME</div>
+<div class="logo-sub">Сұлулық салоны • Экибастуз</div>
+</div>
+</a>
+<!-- Desktop Links -->
+<div class="desktop-menu">
+<a href="#about" class="nav-link">О нас</a>
+<a href="#services" class="nav-link">Услуги и цены</a>
+<a href="#masters" class="nav-link">Мастера</a>
+<a href="#contacts" class="nav-link">Контакты</a>
+<button onclick="openBookingModal()" class="btn-primary">Записаться</button>
+</div>
+<!-- Mobile menu button -->
+<button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+<!-- Mobile menu dropdown -->
+<div id="mobile-menu" class="mobile-dropdown">
+<a href="#about" onclick="toggleMobileMenu()">О нас</a>
+<a href="#services" onclick="toggleMobileMenu()">Услуги и цены</a>
+<a href="#masters" onclick="toggleMobileMenu()">Мастера салона</a>
+<a href="#contacts" onclick="toggleMobileMenu()">Контакты и адрес</a>
+<button onclick="openBookingModal(); toggleMobileMenu();" class="btn-primary" style="width: 100%; margin-top: 5px;">
+Записаться онлайн
+</button>
+</div>
+</header>
+<!-- MAIN PAGE -->
+<main id="main-content">
+<!-- HERO -->
+<section class="hero-section">
+<div>
+<span class="badge">✦ Салон красоты в Экибастузе</span>
+<h1 class="hero-title">Ваша естественная эстетика и безупречный уход</h1>
+<p class="hero-desc">Уютная атмосфера, лучшие мастера и премиальный сервис. Мы подчеркнем вашу индивидуальность.</p>
+<div class="hero-buttons">
+<button onclick="openBookingModal()" class="btn-primary">Записаться на процедуру</button>
+<a href="https://2gis.kz/ekibastuz/geo/70000001084557363" target="_blank" class="btn-secondary">📍 Мы на 2GIS</a>
+</div>
+</div>
+<div>
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Beauty Home" class="hero-image">
+</div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+<div class="section-header">
+<div class="section-sub">О салонe</div>
+<h2 class="section-title">Beauty Home — Ваша территория красоты</h2>
+<p style="max-width: 650px; margin: 10px auto 0; color: #666; font-size: 14px;">
+Мы находимся в г. Экибастуз по адресу: ул. Машхур Жусупа, 55. Создаем комфорт и красоту для вас!
+</p>
+</div>
+</section>
+<!-- SERVICES -->
+<section id="services">
+<div class="section-header">
+<div class="section-sub">Услуги & Прайс</div>
+<h2 class="section-title">Что мы предлагаем</h2>
+</div>
+<div class="tabs-container">
+<button class="tab-btn active" onclick="filterServices('all', this)">Все услуги</button>
+<button class="tab-btn" onclick="filterServices('nails', this)">Ногти</button>
+<button class="tab-btn" onclick="filterServices('hair', this)">Волосы</button>
+<button class="tab-btn" onclick="filterServices('lashes', this)">Ресницы</button>
+<button class="tab-btn" onclick="filterServices('depilation', this)">Шугаринг</button>
+<button class="tab-btn" onclick="filterServices('massage', this)">Массаж</button>
+</div>
+<div class="services-grid">
+<div class="service-card nails">
+<div>
+<div class="service-name">Маникюр с покрытием Gel-Lak</div>
+<div class="service-desc">Выравнивание + покрытие от мастеров Ринаты и Гульхан</div>
+</div>
+<div>
+<div class="service-price">от 6 000 ₸</div>
+<button onclick="openBookingModal('Маникюр')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
+</div>
+</div>
+<div class="service-card nails">
+<div>
+<div class="service-name">Smart-Педикюр</div>
+<div class="service-desc">Обработка стоп, пальцев и покрытие</div>
+</div>
+<div>
+<div class="service-price">от 8 000 ₸</div>
+<button onclick="openBookingModal('Педикюр')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
+</div>
+</div>
+<div class="service-card hair">
+<div>
+<div class="service-name">СПА-уход & Восстановление</div>
+<div class="service-desc">Глубокое восстановление от мастера Алии (без стрижки)</div>
+</div>
+<div>
+<div class="service-price">от 10 000 ₸</div>
+<button onclick="openBookingModal('Уход за волосами')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
+</div>
+</div>
+<div class="service-card lashes">
+<div>
+<div class="service-name">Наращивание ресниц</div>
+<div class="service-desc">1D / 2D / 3D Объемы от мастера Инги</div>
+</div>
+<div>
+<div class="service-price">от 7 000 ₸</div>
+<button onclick="openBookingModal('Ресницы')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
+</div>
+</div>
+<div class="service-card depilation">
+<div>
+<div class="service-name">Шугаринг / Сахарная депиляция</div>
+<div class="service-desc">Бережная депиляция от мастера Анны</div>
+</div>
+<div>
+<div class="service-price">от 3 000 ₸</div>
+<button onclick="openBookingModal('Шугаринг')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
+</div>
+</div>
+<div class="service-card massage">
+<div>
+<div class="service-name">Расслабляющий Массаж & SPA</div>
+<div class="service-desc">Массажные и аппаратные техники от Фатимы</div>
+</div>
+<div>
+<div class="service-price">от 8 000 ₸</div>
+<button onclick="openBookingModal('Массаж')" style="background:none; border:none; color: var(--brand-600); font-size: 12px; cursor: pointer; text-decoration: underline;">Записаться</button>
+</div>
+</div>
+</div>
+</section>
+<!-- MASTERS -->
+<section id="masters">
+<div class="section-header">
+<div class="section-sub">Наша Команда</div>
+<h2 class="section-title">Мастера салона Beauty Home</h2>
+<p style="font-size: 13px; color: #777; margin-top: 4px;">Нажмите на мастера, чтобы открыть его прайс-лист</p>
+</div>
+<div class="masters-grid">
+<!-- Inga -->
+<div class="master-card" onclick="openMasterPage('inga')">
+<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Инга" class="master-img">
+<div class="master-info">
+<div class="master-role">Лэшмейкер</div>
+<div class="master-name">Инга</div>
+<div class="master-desc">Наращивание и ламинирование ресниц. Подберет идеальный объем.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</div>
+<!-- Fatima -->
+<div class="master-card" onclick="openMasterPage('fatima')">
+<img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=600" alt="Фатима" class="master-img">
+<div class="master-info">
+<div class="master-role">Мастер массажа</div>
+<div class="master-name">Фатима</div>
+<div class="master-desc">Аппаратная косметология, массаж и релакс-процедуры.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</div>
+<!-- Anna -->
+<div class="master-card" onclick="openMasterPage('anna')">
+<img src="https://images.unsplash.com/photo-1580894732413-80b4352f2053?auto=format&fit=crop&q=80&w=600" alt="Анна" class="master-img">
+<div class="master-info">
+<div class="master-role">Мастер Шугаринга</div>
+<div class="master-name">Анна</div>
+<div class="master-desc">Депиляция и шугаринг. Быстро, гладко и безболезненно.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</div>
+<!-- Gulhan -->
+<div class="master-card" onclick="openMasterPage('gulhan')">
+<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600" alt="Гульхан" class="master-img">
+<div class="master-info">
+<div class="master-role">Мастер Маникюра</div>
+<div class="master-name">Гульхан</div>
+<div class="master-desc">Аккуратный маникюр, укрепление и стильные дизайны.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</div>
+<!-- Aliya -->
+<div class="master-card" onclick="openMasterPage('aliya')">
+<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600" alt="Алия" class="master-img">
+<div class="master-info">
+<div class="master-role">Уход за волосами</div>
+<div class="master-name">Алия</div>
+<div class="master-desc">Профессиональный СПА-уход и восстановление волос (без стрижки).</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</div>
+<!-- Rinata -->
+<div class="master-card" onclick="openMasterPage('rinata')">
+<img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=600" alt="Рината" class="master-img">
+<div class="master-info">
+<div class="master-role">Маникюр & Педикюр</div>
+<div class="master-name">Рината</div>
+<div class="master-desc">Спец ногтевого сервиса. Маникюр, смарт-педикюр, выравнивание.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACTS -->
+<section id="contacts" style="background: var(--brand-900); color: #fff; border-radius: 24px; margin-bottom: 50px;">
+<div>
+<div style="font-size: 11px; color: var(--brand-300); text-transform: uppercase;">Контакты</div>
+<h2 class="font-serif" style="font-size: 28px; margin-bottom: 15px;">Ждем вас в Beauty Home</h2>
+<p style="margin-bottom: 8px;">📍 г. Экибастуз, ул. Машхур Жусупа, 55</p>
+<p style="margin-bottom: 8px;">📱 WhatsApp: <a href="https://wa.me/77763039000" target="_blank" style="color: #fff; text-decoration: underline;">+7 (776) 303-90-00</a></p>
+<p style="margin-bottom: 20px;">🕒 Ежедневно: 10:00 – 20:00</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+<a href="https://2gis.kz/ekibastuz/geo/70000001084557363" target="_blank" class="btn-primary" style="background: #00B956;">Открыть 2GIS</a>
+<a href="https://www.instagram.com/beauty_home_ekibastuz?cplk=MTk2OXhva3B3cjg1aQ==" target="_blank" class="btn-secondary" style="background: transparent; color: #fff; border-color: #666;">Instagram</a>
+</div>
+</div>
+</section>
+</main>
+<!-- DYNAMIC MASTER PAGE -->
+<div id="master-page" class="hidden" style="max-width: 800px; margin: 90px auto 40px; padding: 20px;">
+<button onclick="closeMasterPage()" class="btn-secondary" style="margin-bottom: 15px;">
+← Назад к мастерам
+</button>
+<div id="master-page-content" style="background: #fff; padding: 25px; border-radius: 20px; border: 1px solid var(--brand-200);">
+</div>
+</div>
+<!-- FLOATING BUTTONS -->
+<div class="floating-buttons">
+<a href="https://www.instagram.com/beauty_home_ekibastuz?cplk=MTk2OXhva3B3cjg1aQ==" target="_blank" class="float-btn float-ig">📸</a>
+<a href="https://wa.me/77763039000" target="_blank" class="float-btn float-wa">💬</a>
+</div>
+<!-- BOOKING MODAL -->
+<div id="booking-modal" class="modal-overlay">
+<div class="modal-body">
+<button class="close-modal" onclick="closeBookingModal()">✕</button>
+<h3 class="font-serif" style="font-size: 24px; color: var(--brand-900); margin-bottom: 4px;">Онлайн-запись</h3>
+<p style="font-size: 12px; color: #777; margin-bottom: 15px;">Заявка напрямую в WhatsApp салона</p>
+<form onsubmit="handleFormSubmit(event)">
+<div class="form-group">
+<label>Ваше имя</label>
+<input type="text" id="booking-name" required class="form-control" placeholder="Имя">
+</div>
+<div class="form-group">
+<label>Телефон</label>
+<input type="tel" id="booking-phone" required class="form-control" placeholder="+7 700 000 00 00">
+</div>
+<div class="form-group">
+<label>Услуга</label>
+<select id="modal-service-select" class="form-control">
+<option value="Маникюр / Педикюр">Маникюр / Педикюр</option>
+<option value="Ресницы">Наращивание ресниц (Инга)</option>
+<option value="Шугаринг">Шугаринг (Анна)</option>
+<option value="Массаж">Массаж (Фатима)</option>
+<option value="Уход за волосами">Уход за волосами (Алия)</option>
+</select>
+</div>
+<div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+<div>
+<label>Дата</label>
+<input type="date" id="booking-date" required class="form-contr
