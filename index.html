@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Home | Салон красоты Экибастуз</title>
+    <title>Салон красоты Beauty Home | Экибастуз</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- Иконка WhatsApp -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Шапка -->
+    <!-- Шапка сайта -->
     <header class="header">
         <div class="container header-container">
             <a href="#" class="logo">Beauty <span>Home</span></a>
             <nav class="nav">
-                <a href="#about">Главная</a>
+                <a href="#about">О нас</a>
                 <a href="#masters">Мастера</a>
-                <a href="#services">Услуги</a>
+                <a href="#services">Услуги и Прайс</a>
                 <a href="#courses">Обучение</a>
+                <a href="#booking">Запись</a>
                 <a href="#contacts">Контакты</a>
             </nav>
             <a href="#booking" class="btn btn-header">Записаться</a>
@@ -31,52 +30,244 @@
     <!-- Главный баннер -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Твоя красота — наша забота</h1>
-            <p>Внимательные и опытные специалисты, безопасные методики, атмосфера уюта в самом центре Экибастуза.</p>
-            <a href="#booking" class="btn btn-primary">Бесплатная консультация</a>
+            <h1>Уют и красота в вашем городе</h1>
+            <p>Премиальный уход, парикмахерские услуги, ногтевой сервис, косметология и ресницы в Экибастузе.</p>
+            <a href="#booking" class="btn btn-primary">Онлайн-запись</a>
         </div>
     </section>
 
-    <!-- Раздел с мастерами -->
+    <!-- Блок "О нас" -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">О салоне Beauty Home</h2>
+            <p class="about-text">
+                Добро пожаловать в <strong>Beauty Home</strong> — уютное пространство красоты в Экибастузе. 
+                У нас работают профессиональные мастера, использующие передовые технологии и современное оборудование для вашей красоты и здоровья.
+            </p>
+        </div>
+    </section>
+
+    <!-- Блок "Наши мастера" -->
     <section id="masters" class="section masters">
         <div class="container">
             <h2 class="section-title">Наши мастера</h2>
             <div class="masters-grid">
+                
                 <div class="master-card">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Алия" class="master-img">
                     <div class="master-info">
                         <h3>Алия</h3>
-                        <span class="master-spec">Парикмахер / Колорист</span>
-                        <p>Окрашивание волос любой сложности с учетом длины и густоты.</p>
+                        <span class="master-spec">Парикмахер / Мастер по окрашиванию</span>
+                        <p class="master-desc">
+                            Профессиональный уход и окрашивание волос любой сложности с учетом длины и густоты.
+                        </p>
                     </div>
                 </div>
 
                 <div class="master-card">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Инга" class="master-img">
                     <div class="master-info">
                         <h3>Инга</h3>
-                        <span class="master-spec">Lashmaker / PMU Master</span>
-                        <p>LED-наращивание ресниц, перманентный макияж и курсы обучения.</p>
+                        <span class="master-spec">Lashmaker / PMU Master / Тренер</span>
+                        <p class="master-desc">
+                            Топовый мастер по LED-наращиванию ресниц, перманентному макияжу и оформлению бровей. Автор обучающих курсов.
+                        </p>
                     </div>
                 </div>
 
                 <div class="master-card">
-                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8c5f?auto=format&fit=crop&w=600&q=80" alt="Фатима" class="master-img">
                     <div class="master-info">
                         <h3>Фатима</h3>
-                        <span class="master-spec">Косметолог / Эстетист</span>
-                        <p>Аппаратная косметология, эстетический уход, лазер и массаж.</p>
+                        <span class="master-spec">Косметолог / Массажист</span>
+                        <p class="master-desc">
+                            Специалист по аппаратной косметологии, современному массажу лица и тела, лазерной эпиляции.
+                        </p>
                     </div>
                 </div>
 
                 <div class="master-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Гульхан" class="master-img">
                     <div class="master-info">
                         <h3>Гульхан</h3>
                         <span class="master-spec">Мастер ногтевого сервиса</span>
-                        <p>Идеальный маникюр, укрепление, верхние формы и дизайн.</p>
+                        <p class="master-desc">
+                            Безупречное покрытие, укрепление ногтей, стильный дизайн и наращивание на верхние формы.
+                        </p>
                     </div>
                 </div>
+
             </div>
         </div>
-        
+    </section>
+
+    <!-- Услуги и цены -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Услуги и Прайс-лист</h2>
+            <div class="services-grid">
+                
+                <!-- Алия: Волосы -->
+                <div class="service-card">
+                    <h3>Алия: Парикмахерские услуги (Окрашивание)</h3>
+                    <ul class="price-list">
+                        <li><span>До плеч (30 см)</span> <span>12 000 ₸</span></li>
+                        <li><span>Ниже плеч (35 см)</span> <span>14 000 ₸</span></li>
+                        <li><span>До лопаток (40 см)</span> <span>16 000 ₸</span></li>
+                        <li><span>Ниже лопаток (45 см)</span> <span>18 000 ₸</span></li>
+                        <li><span>До середины спины (50 см)</span> <span>20 000 ₸</span></li>
+                        <li><span>До талии (60 см)</span> <span>25 000 ₸</span></li>
+                        <li><span>До пояса (70 см)</span> <span>30 000 ₸</span></li>
+                        <li><span>Ниже пояса (80 см)</span> <span>35 000 ₸</span></li>
+                    </ul>
+                </div>
+
+                <!-- Гульхан: Ногти -->
+                <div class="service-card">
+                    <h3>Гульхан: Ногтевой сервис</h3>
+                    <ul class="price-list">
+                        <li><span>Маникюр без покрытия</span> <span>4 500 ₸</span></li>
+                        <li><span>Маникюр с покрытием</span> <span>6 500 – 7 000 ₸</span></li>
+                        <li><span>Френч и лунки</span> <span>7 500 ₸</span></li>
+                        <li><span>Наращивание ногтей</span> <span>9 500 – 10 000 ₸</span></li>
+                        <li><span>Снятие / ремонт</span> <span>от 500 ₸</span></li>
+                    </ul>
+                </div>
+
+                <!-- Инга: Ресницы и Брови -->
+                <div class="service-card">
+                    <h3>Инга: Ресницы и Брови</h3>
+                    <ul class="price-list">
+                        <li><span>Классика / 2D / 3D</span> <span>6 500 – 8 500 ₸</span></li>
+                        <li><span>4D / 5D / Мегаобъём</span> <span>9 500 – 12 000 ₸</span></li>
+                        <li><span>LED-наращивание (доп.)</span> <span>+2 000 ₸</span></li>
+                        <li><span>Татуаж (брови / губы / стрелки)</span> <span>16 000 ₸</span></li>
+                        <li><span>Коррекция + окрашивание бровей</span> <span>3 000 ₸</span></li>
+                    </ul>
+                </div>
+
+                <!-- Фатима: Косметология и Массаж -->
+                <div class="service-card">
+                    <h3>Фатима: Косметология и Массаж</h3>
+                    <ul class="price-list">
+                        <li><span>Трон Кегеля (сеанс / курс)</span> <span>10 000 / 50 000 ₸</span></li>
+                        <li><span>Прессотерапия / Кавитация</span> <span>5 000 – 5 500 ₸</span></li>
+                        <li><span>Чистка лица</span> <span>12 000 ₸</span></li>
+                        <li><span>Карбоновый пилинг</span> <span>7 000 ₸</span></li>
+                        <li><span>Массаж (общий / лица / спины)</span> <span>от 20 000 ₸</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Обучение -->
+    <section id="courses" class="section courses">
+        <div class="container">
+            <h2 class="section-title">Обучение от Инги</h2>
+            <p class="section-subtitle">Освойте профессию бьюти-мастера</p>
+            
+            <div class="courses-grid">
+                
+                <div class="course-card">
+                    <h3>Курс «Бровист»</h3>
+                    <p class="course-duration">3-4 дня</p>
+                    <div class="course-price">60 000 ₸</div>
+                </div>
+
+                <div class="course-card">
+                    <h3>Курс «LED-наращивание»</h3>
+                    <p class="course-duration">3 дня</p>
+                    <div class="course-price">40 000 ₸</div>
+                </div>
+
+                <div class="course-card">
+                    <h3>Курс «Lashmaker» (2D)</h3>
+                    <p class="course-duration">1-3 недели</p>
+                    <div class="course-price">90 000 ₸</div>
+                </div>
+
+                <div class="course-card highlight">
+                    <h3>Курс «ALL INCLUSIVE»</h3>
+                    <p class="course-duration">1-3 месяца</p>
+                    <div class="course-price">150 000 ₸</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Онлайн-запись -->
+    <section id="booking" class="section booking">
+        <div class="container">
+            <div class="booking-card">
+                <h2 class="section-title">Быстрая запись</h2>
+                <p>Заполните форму, и мы свяжемся с вами в WhatsApp для подтверждения времени.</p>
+                
+                <form id="appointment-form" class="booking-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="+7 (700) 000-00-00" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="master" required>
+                            <option value="" disabled selected>Выберите мастера</option>
+                            <option value="Алия">Алия (Парикмахерские услуги)</option>
+                            <option value="Гульхан">Гульхан (Ногтевой сервис)</option>
+                            <option value="Инга">Инга (Ресницы, Брови, Татуаж)</option>
+                            <option value="Фатима">Фатима (Косметология, Массаж, Аппаратные)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" required>
+                            <option value="" disabled selected>Выберите услугу</option>
+                            <option value="Парикмахерские услуги / Окрашивание">Парикмахерские услуги / Окрашивание</option>
+                            <option value="Маникюр / Наращивание ногтей">Маникюр / Наращивание ногтей</option>
+                            <option value="Наращивание ресниц / LED">Наращивание ресниц / LED</option>
+                            <option value="Татуаж / Брови">Татуаж / Оформление бровей</option>
+                            <option value="Аппаратная косметология">Аппаратные процедуры / Косметология</option>
+                            <option value="Массаж">Массаж</option>
+                            <option value="Обучение">Обучение</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Отправить в WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты и Карта -->
+    <section id="contacts" class="section contacts">
+        <div class="container contacts-grid">
+            <div class="contacts-info">
+                <h2 class="section-title">Контакты</h2>
+                <p><strong>Город:</strong> Экибастуз</p>
+                <p><strong>Адрес:</strong> ул. Машхур Жусупа Машхур Жусупа 55</p>
+                <p><strong>График работы:</strong> Пн-Вс: по предварительной записи</p>
+                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/beauty_home_ekibastuz" target="_blank">@beauty_home_ekibastuz</a></p>
+                
+                <!-- Кнопка перехода в 2ГИС -->
+                <a href="https://2gis.kz/ekibastuz" target="_blank" class="btn-2gis">Открыть в 2ГИС</a>
+            </div>
+
+            <!-- Интерактивная карта -->
+            <div class="map-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a0011b1b11b11b11b11b11b11b11b11&source=constructor" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Beauty Home (Экибастуз). Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+                                                               </html>
+
+                            
