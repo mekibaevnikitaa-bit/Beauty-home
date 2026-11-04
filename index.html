@@ -1,273 +1,287 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Салон красоты Beauty Home | Экибастуз</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Beauty Home — Салон красоты в Экибастузе</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Кастомные стили -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-brand-50 text-gray-800 font-sans antialiased selection:bg-brand-200 selection:text-brand-900">
 
-    <!-- Шапка сайта -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="#" class="logo">Beauty <span>Home</span></a>
-            <nav class="nav">
-                <a href="#about">О нас</a>
-                <a href="#masters">Мастера</a>
-                <a href="#services">Услуги и Прайс</a>
-                <a href="#courses">Обучение</a>
-                <a href="#booking">Запись</a>
-                <a href="#contacts">Контакты</a>
+    <!-- HEADER & NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-brand-200/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo with Emblem -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-600 via-amber-300 to-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-white rounded-full flex flex-col items-center justify-center border border-amber-200 overflow-hidden relative">
+                        <svg class="w-7 h-7 text-amber-600" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13c-1.66 0-3 1.34-3 3 0 1.05.54 1.97 1.35 2.5C8.07 13.21 7 14.98 7 17h2c0-1.66 1.34-3 3-3s3 1.34 3 3h2c0-2.02-1.07-3.79-2.35-4.5C17.46 11.97 18 11.05 18 10c0-1.66-1.34-3-3-3h-4zm3 3c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2 text-[10px] text-amber-700 tracking-wider font-serif">
+                        <span>Сұлулық салоны</span>
+                        <span>•</span>
+                        <span>Салон Красоты</span>
+                    </div>
+                    <span class="font-serif text-2xl font-bold tracking-wider text-rose-950 flex items-center gap-1 leading-none">
+                        BEAUTY <span class="text-rose-900 font-extrabold">HOME</span>
+                    </span>
+                    <span class="text-[9px] tracking-[0.2em] text-amber-700 uppercase font-semibold">Est. 2008</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-900">
+                <a href="#about" class="hover:text-brand-600 transition-colors">О нас</a>
+                <a href="#services" class="hover:text-brand-600 transition-colors">Услуги и цены</a>
+                <a href="#masters" class="hover:text-brand-600 transition-colors">Мастера</a>
+                <a href="#contacts" class="hover:text-brand-600 transition-colors">Контакты</a>
             </nav>
-            <a href="#booking" class="btn btn-header">Записаться</a>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="https://wa.me/77763039000" target="_blank" class="text-brand-700 hover:text-brand-900 font-medium text-sm flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+                    <span>+7 (776) 303-90-00</span>
+                </a>
+                <button onclick="openBookingModal()" class="bg-brand-800 hover:bg-brand-900 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Онлайн-запись
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-brand-900 hover:text-brand-600 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-50 border-b border-brand-200 px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium hover:text-brand-600">О нас</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium hover:text-brand-600">Услуги и цены</a>
+            <a href="#masters" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium hover:text-brand-600">Мастера</a>
+            <a href="#contacts" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium hover:text-brand-600">Контакты</a>
+            <div class="pt-4 border-t border-brand-200 flex flex-col gap-3">
+                <a href="https://wa.me/77763039000" target="_blank" class="flex items-center gap-2 text-brand-900 font-medium">
+                    <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i>
+                    <span>+7 (776) 303-90-00</span>
+                </a>
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full bg-brand-800 text-white py-3 rounded-xl font-medium shadow">
+                    Записаться онлайн
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Главный баннер -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Уют и красота в вашем городе</h1>
-            <p>Премиальный уход, парикмахерские услуги, ногтевой сервис, косметология и ресницы в Экибастузе.</p>
-            <a href="#booking" class="btn btn-primary">Онлайн-запись</a>
-        </div>
-    </section>
-
-    <!-- Блок "О нас" -->
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title">О салоне Beauty Home</h2>
-            <p class="about-text">
-                Добро пожаловать в <strong>Beauty Home</strong> — уютное пространство красоты в Экибастузе. 
-                У нас работают профессиональные мастера, использующие передовые технологии и современное оборудование для вашей красоты и здоровья.
-            </p>
-        </div>
-    </section>
-
-    <!-- Блок "Наши мастера" -->
-    <section id="masters" class="section masters">
-        <div class="container">
-            <h2 class="section-title">Наши мастера</h2>
-            <div class="masters-grid">
-                
-                <div class="master-card">
-                    <div class="master-info">
-                        <h3>Алия</h3>
-                        <span class="master-spec">Парикмахер / Мастер по окрашиванию</span>
-                        <p class="master-desc">
-                            Профессиональный уход и окрашивание волос любой сложности с учетом длины и густоты.
-                        </p>
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-sparkles"></i> Салон красоты в Экибастузе
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-brand-900">
+                        Ваша естественная эстетика и безупречный уход
+                    </h1>
+                    <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto md:mx-0 font-light">
+                        Уютная атмосфера, лучшие мастера и премиальный сервис. Мы подчеркнем вашу индивидуальность и подарим минуты истинного наслаждения.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                        <button onclick="openBookingModal()" class="bg-brand-800 hover:bg-brand-900 text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all text-center">
+                            Записаться на процедуру
+                        </button>
+                        <a href="https://2gis.kz/ekibastuz/geo/70000001084557363" target="_blank" class="bg-white hover:bg-brand-100 text-brand-900 border border-brand-300 px-6 py-3.5 rounded-full font-medium transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-600"></i>
+                            Мы на 2GIS
+                        </a>
                     </div>
                 </div>
-
-                <div class="master-card">
-                    <div class="master-info">
-                        <h3>Инга</h3>
-                        <span class="master-spec">Lashmaker / PMU Master / Тренер</span>
-                        <p class="master-desc">
-                            Топовый мастер по LED-наращиванию ресниц, перманентному макияжу и оформлению бровей. Автор обучающих курсов.
-                        </p>
+                <div class="relative">
+                    <div class="relative mx-auto max-w-md md:max-w-none">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Beauty Salon Interior" class="rounded-3xl shadow-2xl object-cover w-full h-[450px]">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-brand-100 hidden sm:block">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-800 text-xl font-bold">
+                                    5.0
+                                </div>
+                                <div>
+                                    <div class="flex text-amber-400 text-xs">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="text-xs font-semibold text-gray-800 mt-0.5">Высокий рейтинг 2GIS</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="master-card">
-                    <div class="master-info">
-                        <h3>Фатима</h3>
-                        <span class="master-spec">Косметолог / Массажист</span>
-                        <p class="master-desc">
-                            Специалист по аппаратной косметологии, современному массажу лица и тела, лазерной эпиляции.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="master-card">
-                    <div class="master-info">
-                        <h3>Гульхан</h3>
-                        <span class="master-spec">Мастер ногтевого сервиса</span>
-                        <p class="master-desc">
-                            Безупречное покрытие, укрепление ногтей, стильный дизайн и наращивание на верхние формы.
-                        </p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Услуги и цены -->
-    <section id="services" class="section services">
-        <div class="container">
-            <h2 class="section-title">Услуги и Прайс-лист</h2>
-            <div class="services-grid">
-                
-                <!-- Алия: Волосы -->
-                <div class="service-card">
-                    <h3>Алия: Парикмахерские услуги (Окрашивание)</h3>
-                    <ul class="price-list">
-                        <li><span>До плеч (30 см)</span> <span>12 000 ₸</span></li>
-                        <li><span>Ниже плеч (35 см)</span> <span>14 000 ₸</span></li>
-                        <li><span>До лопаток (40 см)</span> <span>16 000 ₸</span></li>
-                        <li><span>Ниже лопаток (45 см)</span> <span>18 000 ₸</span></li>
-                        <li><span>До середины спины (50 см)</span> <span>20 000 ₸</span></li>
-                        <li><span>До талии (60 см)</span> <span>25 000 ₸</span></li>
-                        <li><span>До пояса (70 см)</span> <span>30 000 ₸</span></li>
-                        <li><span>Ниже пояса (80 см)</span> <span>35 000 ₸</span></li>
-                    </ul>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase">О нашем салоне</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl text-brand-900">Красота начинается с заботы</h3>
+                <p class="text-gray-600 font-light leading-relaxed">
+                    В салоне <strong>Beauty Home</strong> мы создали пространство, где каждый клиент чувствует себя особенным. Мы используем только профессиональные средства, стерильные инструменты и современные техники работы. Наш приоритет — здоровье, эстетика и ваша улыбка после каждого визита.
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-200 flex items-center justify-center text-brand-800 text-xl">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h4 class="font-serif text-xl text-brand-900 font-semibold">Безопасность</h4>
+                    <p class="text-xs text-gray-600">100% стерилизация инструментов по нормам СЭС и одноразовые расходные материалы.</p>
                 </div>
-
-                <!-- Гульхан: Ногти -->
-                <div class="service-card">
-                    <h3>Гульхан: Ногтевой сервис</h3>
-                    <ul class="price-list">
-                        <li><span>Маникюр без покрытия</span> <span>4 500 ₸</span></li>
-                        <li><span>Маникюр с покрытием</span> <span>6 500 – 7 000 ₸</span></li>
-                        <li><span>Френч и лунки</span> <span>7 500 ₸</span></li>
-                        <li><span>Наращивание ногтей</span> <span>9 500 – 10 000 ₸</span></li>
-                        <li><span>Снятие / ремонт</span> <span>от 500 ₸</span></li>
-                    </ul>
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-200 flex items-center justify-center text-brand-800 text-xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h4 class="font-serif text-xl text-brand-900 font-semibold">Мастера-профи</h4>
+                    <p class="text-xs text-gray-600">Опытные специалисты, постоянно повышающие квалификацию.</p>
                 </div>
-
-                <!-- Инга: Ресницы и Брови -->
-                <div class="service-card">
-                    <h3>Инга: Ресницы и Брови</h3>
-                    <ul class="price-list">
-                        <li><span>Классика / 2D / 3D</span> <span>6 500 – 8 500 ₸</span></li>
-                        <li><span>4D / 5D / Мегаобъём</span> <span>9 500 – 12 000 ₸</span></li>
-                        <li><span>LED-наращивание (доп.)</span> <span>+2 000 ₸</span></li>
-                        <li><span>Татуаж (брови / губы / стрелки)</span> <span>16 000 ₸</span></li>
-                        <li><span>Коррекция + окрашивание бровей</span> <span>3 000 ₸</span></li>
-                    </ul>
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-200 flex items-center justify-center text-brand-800 text-xl">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h4 class="font-serif text-xl text-brand-900 font-semibold">Премиум уход</h4>
+                    <p class="text-xs text-gray-600">Сертифицированная косметика и брендовые гипоаллергенные составы.</p>
                 </div>
-
-                <!-- Фатима: Косметология и Массаж -->
-                <div class="service-card">
-                    <h3>Фатима: Косметология и Массаж</h3>
-                    <ul class="price-list">
-                        <li><span>Трон Кегеля (сеанс / курс)</span> <span>10 000 / 50 000 ₸</span></li>
-                        <li><span>Прессотерапия / Кавитация</span> <span>5 000 – 5 500 ₸</span></li>
-                        <li><span>Чистка лица</span> <span>12 000 ₸</span></li>
-                        <li><span>Карбоновый пилинг</span> <span>7 000 ₸</span></li>
-                        <li><span>Массаж (общий / лица / спины)</span> <span>от 20 000 ₸</span></li>
-                    </ul>
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-200 flex items-center justify-center text-brand-800 text-xl">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h4 class="font-serif text-xl text-brand-900 font-semibold">Атмосфера</h4>
+                    <p class="text-xs text-gray-600">Ароматный кофе, вкусный чай, уют и максимальный комфорт для вас.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Обучение -->
-    <section id="courses" class="section courses">
-        <div class="container">
-            <h2 class="section-title">Обучение от Инги</h2>
-            <p class="section-subtitle">Освойте профессию бьюти-мастера</p>
-            
-            <div class="courses-grid">
-                
-                <div class="course-card">
-                    <h3>Курс «Бровист»</h3>
-                    <p class="course-duration">3-4 дня</p>
-                    <div class="course-price">60 000 ₸</div>
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-12">
+                <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase">Услуги и Прайс-лист</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl text-brand-900">Что мы предлагаем</h3>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="service-tabs">
+                <button onclick="filterServices('all')" class="tab-btn active px-5 py-2 rounded-full text-sm font-medium transition-all">Все услуги</button>
+                <button onclick="filterServices('nails')" class="tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all">Ногтевой сервис</button>
+                <button onclick="filterServices('hair')" class="tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all">Уход за волосами</button>
+                <button onclick="filterServices('lashes')" class="tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all">Ресницы</button>
+                <button onclick="filterServices('depilation')" class="tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all">Шугаринг</button>
+                <button onclick="filterServices('massage')" class="tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all">Массаж</button>
+            </div>
+
+            <!-- Service Items List -->
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto" id="services-grid">
+                <!-- Nails -->
+                <div class="service-card nails bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">Маникюр с покрытием Gel-Lak</h4>
+                        <p class="text-xs text-gray-500 mt-1">Комбинированный маникюр + выравнивание + цвет</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 6 000 ₸</span>
+                        <button onclick="openBookingModal('Маникюр с покрытием')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
                 </div>
 
-                <div class="course-card">
-                    <h3>Курс «LED-наращивание»</h3>
-                    <p class="course-duration">3 дня</p>
-                    <div class="course-price">40 000 ₸</div>
+                <div class="service-card nails bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">Педикюр (Smart / Классический)</h4>
+                        <p class="text-xs text-gray-500 mt-1">Обработка стоп, пальцев + покрытие</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 8 000 ₸</span>
+                        <button onclick="openBookingModal('Педикюр')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
                 </div>
 
-                <div class="course-card">
-                    <h3>Курс «Lashmaker» (2D)</h3>
-                    <p class="course-duration">1-3 недели</p>
-                    <div class="course-price">90 000 ₸</div>
+                <!-- Hair -->
+                <div class="service-card hair bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">СПА-уход & Восстановление волос</h4>
+                        <p class="text-xs text-gray-500 mt-1">Глубокое увлажнение, пилинг кожи головы, укладка</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 10 000 ₸</span>
+                        <button onclick="openBookingModal('СПА-уход за волосами')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
                 </div>
 
-                <div class="course-card highlight">
-                    <h3>Курс «ALL INCLUSIVE»</h3>
-                    <p class="course-duration">1-3 месяца</p>
-                    <div class="course-price">150 000 ₸</div>
+                <!-- Lashes -->
+                <div class="service-card lashes bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">Наращивание ресниц (1D / 2D / 3D)</h4>
+                        <p class="text-xs text-gray-500 mt-1">Классика и объемы от мастера Инги</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 7 000 ₸</span>
+                        <button onclick="openBookingModal('Наращивание ресниц')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
                 </div>
 
+                <div class="service-card lashes bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">Ламинирование & Ботокс ресниц</h4>
+                        <p class="text-xs text-gray-500 mt-1">Изгиб, окрашивание и укрепление</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 6 500 ₸</span>
+                        <button onclick="openBookingModal('Ламинирование ресниц')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
+                </div>
+
+                <!-- Depilation -->
+                <div class="service-card depilation bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">Шугаринг / Сахарная депиляция</h4>
+                        <p class="text-xs text-gray-500 mt-1">Деликатное удаление волос на любой зоне</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 3 000 ₸</span>
+                        <button onclick="openBookingModal('Шугаринг')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
+                </div>
+
+                <!-- Massage -->
+                <div class="service-card massage bg-white p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold text-brand-900">Расслабляющий & SPA Массаж</h4>
+                        <p class="text-xs text-gray-500 mt-1">Массаж спины, релакс или антицеллюлитный от Фатимы</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-semibold text-brand-800">от 8 000 ₸</span>
+                        <button onclick="openBookingModal('Массаж')" class="text-xs text-brand-600 font-medium hover:underline mt-1">Записаться</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Онлайн-запись -->
-    <section id="booking" class="section booking">
-        <div class="container">
-            <div class="booking-card">
-                <h2 class="section-title">Быстрая запись</h2>
-                <p>Заполните форму, и мы свяжемся с вами в WhatsApp для подтверждения времени.</p>
-                
-                <form id="appointment-form" class="booking-form">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" placeholder="+7 (700) 000-00-00" required>
-                    </div>
-                    <div class="form-group">
-                        <select id="master" required>
-                            <option value="" disabled selected>Выберите мастера</option>
-                            <option value="Алия">Алия (Парикмахерские услуги)</option>
-                            <option value="Гульхан">Гульхан (Ногтевой сервис)</option>
-                            <option value="Инга">Инга (Ресницы, Брови, Татуаж)</option>
-                            <option value="Фатима">Фатима (Косметология, Массаж, Аппаратные)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select id="service" required>
-                            <option value="" disabled selected>Выберите услугу</option>
-                            <option value="Парикмахерские услуги / Окрашивание">Парикмахерские услуги / Окрашивание</option>
-                            <option value="Маникюр / Наращивание ногтей">Маникюр / Наращивание ногтей</option>
-                            <option value="Наращивание ресниц / LED">Наращивание ресниц / LED</option>
-                            <option value="Татуаж / Брови">Татуаж / Оформление бровей</option>
-                            <option value="Аппаратная косметология">Аппаратные процедуры / Косметология</option>
-                            <option value="Массаж">Массаж</option>
-                            <option value="Обучение">Обучение</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="date" id="date" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">Отправить в WhatsApp</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты и Карта -->
-    <section id="contacts" class="section contacts">
-        <div class="container contacts-grid">
-            <div class="contacts-info">
-                <h2 class="section-title">Контакты</h2>
-                <p><strong>Город:</strong> Экибастуз</p>
-                <p><strong>Адрес:</strong> ул. Машхур Жусупа Машхур Жусупа 55</p>
-                <p><strong>График работы:</strong> Пн-Вс: по предварительной записи</p>
-                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/beauty_home_ekibastuz" target="_blank">@beauty_home_ekibastuz</a></p>
-                
-                <!-- Кнопка перехода в 2ГИС -->
-                <a href="https://2gis.kz/ekibastuz" target="_blank" class="btn-2gis">Открыть в 2ГИС</a>
-            </div>
-
-            <!-- Интерактивная карта -->
-            <div class="map-container">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a0011b1b11b11b11b11b11b11b11b11&source=constructor" allowfullscreen="true"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 Beauty Home (Экибастуз). Все права защищены.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-                                                               </html>
-
-                            
+ 
