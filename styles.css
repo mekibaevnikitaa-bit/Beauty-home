@@ -1,394 +1,63 @@
 /* ==========================================================
-   Стили Beauty Home (Исправленные размеры изображений)
+   Beauty Home — Кастомные CSS стили
    ========================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Настройка Tailwind оттенков */
+:root {
+  --brand-50: #faf7f5;
+  --brand-100: #f4ede7;
+  --brand-200: #e7d9cd;
+  --brand-300: #d5bfae;
+  --brand-600: #9b6c55;
+  --brand-800: #6a473b;
+  --brand-900: #563c33;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: #333333;
-    line-height: 1.6;
-    background-color: #f7f5f2;
+/* Шапка с эффектом матового стекла */
+.glass-header {
+  background: rgba(250, 247, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
+/* Кнопки переключения категорий (Табы) */
+.tab-btn {
+  background-color: #ffffff;
+  color: var(--brand-800);
+  border: 1px solid var(--brand-200);
+  cursor: pointer;
 }
 
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 20px;
+.tab-btn:hover {
+  background-color: var(--brand-100);
 }
 
-/* Кнопки */
-.btn {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: #cbb29a;
-    color: #ffffff;
-}
-
-.btn-primary:hover {
-    background-color: #b5987d;
-}
-
-.btn-header {
-    border: 1px solid #cbb29a;
-    color: #8c735c;
-    padding: 8px 20px;
-}
-
-.btn-header:hover {
-    background-color: #cbb29a;
-    color: #ffffff;
-}
-
-.btn-card {
-    background-color: #cbb29a;
-    color: #ffffff;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.btn-card:hover {
-    background-color: #b5987d;
-}
-
-/* Шапка */
-.header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #222;
-    text-decoration: none;
-}
-
-.logo span {
-    color: #cbb29a;
-}
-
-.nav a {
-    margin: 0 12px;
-    text-decoration: none;
-    color: #555;
-    font-size: 14px;
-}
-
-.nav a:hover {
-    color: #cbb29a;
-}
-
-/* Баннер */
-.hero {
-    background: #f1ede8;
-    padding: 80px 0;
-    text-align: center;
-    border-bottom: 1px solid #e8e2db;
-}
-
-.hero-content h1 {
-    font-size: 42px;
-    color: #222;
-    margin-bottom: 15px;
-}
-
-.hero-content p {
-    font-size: 16px;
-    color: #666;
-    max-width: 650px;
-    margin: 0 auto 30px;
-}
-
-/* Секции */
-.section {
-    padding: 60px 0;
-}
-
-.section-title {
-    text-align: left;
-    font-size: 32px;
-    margin-bottom: 35px;
-    color: #222;
-}
-
-/* Мастера */
-.masters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.master-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-}
-
-/* Жестко фиксированная высота для фото мастеров */
-.master-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 15px;
-}
-
-.master-info h3 {
-    font-size: 20px;
-    color: #222;
-}
-
-.master-spec {
-    display: block;
-    color: #cbb29a;
-    font-weight: 600;
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-.master-info p {
-    font-size: 13px;
-    color: #666;
-}
-
-/* Сетка услуг */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.service-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Жестко фиксированная высота обертки картинок услуг */
-.card-img-wrap {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.service-card:hover .card-img {
-    transform: scale(1.04);
-}
-
-.service-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #222;
-}
-
-.price-list {
-    list-style: none;
-}
-
-.price-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee;
-    font-size: 13px;
-    color: #555;
-}
-
-/* Обучение */
-.courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.course-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-}
-
-.course-card.highlight {
-    border: 2px solid #cbb29a;
-}
-
-.course-card h3 {
-    color: #8c735c;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.course-card p {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.course-price {
-    font-size: 20px;
-    font-weight: 700;
-    color: #222;
-}
-
-/* Форма */
-.booking {
-    background-color: #f1ede8;
-}
-
-.booking-card {
-    max-width: 500px;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-.btn-full {
-    width: 100%;
-}
-
-/* Контакты */
-.contacts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.map-container {
-    height: 280px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.btn-2gis {
-    display: inline-block;
-    background-color: #00aaff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 13px;
-    margin-top: 15px;
-}
-
-.footer {
-    background: #222;
-    color: #888;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 13px;
+.tab-btn.active {
+  background-color: var(--brand-800) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-800) !important;
+  box-shadow: 0 4px 12px rgba(106, 71, 59, 0.2);
 }
 
 /* Плавающая кнопка WhatsApp */
 .whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 25px;
-    right: 25px;
-    background-color: #25d366;
-    color: #fff;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 32px;
-    box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: transform 0.3s ease;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 40;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
 }
 
-/* Мобильная адаптивность */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px 12px;
-    }
-    .nav a {
-        margin: 0;
-        font-size: 12px;
-    }
-    .btn-header {
-        display: none;
-    }
-    .hero-content h1 {
-        font-size: 30px;
-    }
-    .contacts-grid {
-        grid-template-columns: 1fr;
-    }
-   }
+/* Плавный перенос и скрытие карточек при фильтрации */
+.service-card {
+  transition: all 0.4s ease;
+}
+
+.service-card.hidden-card {
+  display: none !important;
+}
