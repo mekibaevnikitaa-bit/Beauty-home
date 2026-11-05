@@ -377,30 +377,32 @@
         /* Floating Contact Buttons */
         .floating-buttons {
             position: fixed;
-            bottom: 20px;
+            bottom: 24px;
             right: 20px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            z-index: 99;
+            z-index: 99999;
         }
 
         .float-btn {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             text-decoration: none;
             color: white;
-            font-size: 24px;
-            transition: transform 0.2s;
+            font-size: 26px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 2px solid #fff;
         }
 
         .float-btn:active {
-            transform: scale(0.9);
+            transform: scale(0.92);
         }
 
         .float-wa {
@@ -508,7 +510,7 @@
 
             <div class="masters-grid">
                 <!-- Inga -->
-                <a href="javascript:void(0)" class="master-card" onclick="openMasterPage('inga'); return false;">
+                <div class="master-card" onclick="openMasterPage('inga')" ontouchstart="">
                     <div class="master-img-wrapper">
                         <img src="1000378873.jpg" alt="Инга" class="master-img" onerror="this.onerror=null; this.src='inga.jpg';">
                     </div>
@@ -518,10 +520,10 @@
                         <div class="master-desc">Наращивание и ламинирование ресниц. Подберет идеальный изгиб и объем.</div>
                         <span class="click-hint">Подробнее и цены →</span>
                     </div>
-                </a>
+                </div>
 
                 <!-- Fatima -->
-                <a href="javascript:void(0)" class="master-card" onclick="openMasterPage('fatima'); return false;">
+                <div class="master-card" onclick="openMasterPage('fatima')" ontouchstart="">
                     <div class="master-img-wrapper">
                         <img src="1000378874.jpg" alt="Фатима" class="master-img" onerror="this.onerror=null; this.src='fatima.jpg';">
                     </div>
@@ -531,10 +533,10 @@
                         <div class="master-desc">Аппаратная косметология, RF-лифтинг и расслабляющий уход за кожей.</div>
                         <span class="click-hint">Подробнее и цены →</span>
                     </div>
-                </a>
+                </div>
 
                 <!-- Anna -->
-                <a href="javascript:void(0)" class="master-card" onclick="openMasterPage('anna'); return false;">
+                <div class="master-card" onclick="openMasterPage('anna')" ontouchstart="">
                     <div class="master-img-wrapper">
                         <img src="1000378875.jpg" alt="Анна" class="master-img" onerror="this.onerror=null; this.src='anna.jpg';">
                     </div>
@@ -544,10 +546,10 @@
                         <div class="master-desc">Сахарная депиляция всех зон. Гладкая кожа, комфортная процедура.</div>
                         <span class="click-hint">Подробнее и цены →</span>
                     </div>
-                </a>
+                </div>
 
                 <!-- Gulhan -->
-                <a href="javascript:void(0)" class="master-card" onclick="openMasterPage('gulhan'); return false;">
+                <div class="master-card" onclick="openMasterPage('gulhan')" ontouchstart="">
                     <div class="master-img-wrapper">
                         <img src="1000378872.jpg" alt="Гульхан" class="master-img" onerror="this.onerror=null; this.src='gulhan.jpg';">
                     </div>
@@ -557,10 +559,10 @@
                         <div class="master-desc">Аккуратный маникюр, укрепление и эстетичное покрытие.</div>
                         <span class="click-hint">Подробнее и цены →</span>
                     </div>
-                </a>
+                </div>
 
                 <!-- Aliya -->
-                <a href="javascript:void(0)" class="master-card" onclick="openMasterPage('aliya'); return false;">
+                <div class="master-card" onclick="openMasterPage('aliya')" ontouchstart="">
                     <div class="master-img-wrapper">
                         <img src="1000378876.jpg" alt="Алия" class="master-img" onerror="this.onerror=null; this.src='aliya.jpg';">
                     </div>
@@ -570,10 +572,10 @@
                         <div class="master-desc">Глубокое восстановление волос, СПА-процедуры и уход.</div>
                         <span class="click-hint">Подробнее и цены →</span>
                     </div>
-                </a>
+                </div>
 
                 <!-- Rinata -->
-                <a href="javascript:void(0)" class="master-card" onclick="openMasterPage('rinata'); return false;">
+                <div class="master-card" onclick="openMasterPage('rinata')" ontouchstart="">
                     <div class="master-img-wrapper">
                         <img src="1000378877.jpg" alt="Рината" class="master-img" onerror="this.onerror=null; this.src='rinata.jpg';">
                     </div>
@@ -583,7 +585,7 @@
                         <div class="master-desc">Аппаратный и комбинированный маникюр, smart-педикюр.</div>
                         <span class="click-hint">Подробнее и цены →</span>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
 
@@ -613,4 +615,5 @@
             <div class="price-item">
                 <div>
                     <div class="price-title">Наращивание ресниц (Классика / 2D)</div>
-                    <div class="price-desc">Премиум мат
+                    <div class="price-desc">Премиум материалы, гипоаллергенный клей</div>
+     
