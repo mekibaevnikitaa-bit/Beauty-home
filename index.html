@@ -1,617 +1,690 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Home — Салон красоты в Экибастузе</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --brand-50: #fdfbf7;
-            --brand-100: #f7f0e6;
-            --brand-200: #ebdcc9;
-            --brand-600: #8c5a3c;
-            --brand-800: #4a2c1d;
-            --brand-900: #2d180e;
-            --accent-gold: #c5a059;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--brand-50);
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .font-serif {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        /* Header Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--brand-200);
-            padding: 12px 20px;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--brand-800), var(--brand-600));
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: bold;
-            font-size: 18px;
-            border: 2px solid var(--accent-gold);
-        }
-
-        .logo-text-top {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: var(--brand-600);
-            text-transform: uppercase;
-        }
-
-        .logo-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--brand-900);
-            letter-spacing: 1px;
-            line-height: 1;
-        }
-
-        .logo-text-bot {
-            font-size: 9px;
-            letter-spacing: 1.5px;
-            color: #777;
-        }
-
-        .hamburger {
-            width: 40px;
-            height: 40px;
-            background: var(--brand-100);
-            border: none;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 20px;
-            height: 2px;
-            background: var(--brand-800);
-            border-radius: 2px;
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--brand-50);
-            z-index: 200;
-            flex-direction: column;
-            padding: 24px;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        .menu-close {
-            align-self: flex-end;
-            font-size: 28px;
-            border: none;
-            background: none;
-            color: var(--brand-800);
-            cursor: pointer;
-        }
-
-        .menu-links {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-        }
-
-        .menu-links a {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            color: var(--brand-900);
-            text-decoration: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 40px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tagline {
-            display: inline-block;
-            background: var(--brand-100);
-            color: var(--brand-600);
-            font-weight: 600;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 34px;
-            color: var(--brand-900);
-            line-height: 1.2;
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-
-        .hero p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-
-        .btn-primary {
-            background: var(--brand-800);
-            color: white;
-            padding: 14px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(74, 44, 29, 0.2);
-            display: inline-block;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--brand-800);
-            padding: 14px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            border: 1px solid var(--brand-800);
-            display: inline-block;
-        }
-
-        /* Masters Section */
-        .section-title {
-            text-align: center;
-            margin: 40px 0 20px;
-        }
-
-        .section-title span {
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: var(--brand-600);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .section-title h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            color: var(--brand-900);
-            margin-top: 4px;
-        }
-
-        .masters-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .master-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-            border: 1px solid var(--brand-100);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .master-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-
-        .master-img-wrapper {
-            width: 100%;
-            height: 380px;
-            background-color: var(--brand-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .master-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: var(--brand-100);
-            display: block;
-        }
-
-        .master-info {
-            padding: 16px;
-        }
-
-        .master-role {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--brand-600);
-            font-weight: 700;
-        }
-
-        .master-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            color: var(--brand-900);
-            margin: 4px 0 8px;
-            font-weight: 600;
-        }
-
-        .master-desc {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .click-hint {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--brand-800);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Price Section */
-        .price-section {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .price-item {
-            background: #fff;
-            padding: 16px 20px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid var(--brand-100);
-        }
-
-        .price-title {
-            font-weight: 600;
-            color: var(--brand-900);
-            font-size: 14px;
-        }
-
-        .price-desc {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .price-cost {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--brand-800);
-            white-space: nowrap;
-        }
-
-        /* Floating Contact Buttons */
-        .floating-buttons {
-            position: fixed;
-            bottom: 24px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 99999;
-        }
-
-        .float-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            text-decoration: none;
-            color: white;
-            font-size: 26px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            border: 2px solid #fff;
-        }
-
-        .float-btn:active {
-            transform: scale(0.92);
-        }
-
-        .float-wa {
-            background: #25D366;
-        }
-
-        .float-ig {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        /* Master Single Page Overlay */
-        .master-page {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--brand-50);
-            z-index: 300;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--brand-100);
-            color: var(--brand-900);
-            border: none;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid var(--brand-200);
-            margin-top: 40px;
-            font-size: 12px;
-            color: #888;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Home — Салон красоты в Экибастузе</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--brand-50: #fdfbf7;
+--brand-100: #f7f0e6;
+--brand-200: #ebdcc9;
+--brand-600: #8c5a3c;
+--brand-800: #4a2c1d;
+--brand-900: #2d180e;
+--accent-gold: #c5a059;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+-webkit-tap-highlight-color: transparent;
+}
+body {
+font-family: 'Montserrat', sans-serif;
+background-color: var(--brand-50);
+color: #333;
+line-height: 1.5;
+}
+.font-serif {
+font-family: 'Cormorant Garamond', serif;
+}
+/* Header Navigation */
+header {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(253, 251, 247, 0.95);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid var(--brand-200);
+padding: 12px 20px;
+}
+.header-container {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+display: flex;
+align-items: center;
+gap: 12px;
+text-decoration: none;
+}
+.logo-avatar {
+width: 44px;
+height: 44px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--brand-800), var(--brand-600));
+color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Cormorant Garamond', serif;
+font-weight: bold;
+font-size: 18px;
+border: 2px solid var(--accent-gold);
+}
+.logo-text-top {
+font-size: 9px;
+letter-spacing: 2px;
+color: var(--brand-600);
+text-transform: uppercase;
+}
+.logo-title {
+font-family: 'Cormorant Garamond', serif;
+font-size: 20px;
+font-weight: 700;
+color: var(--brand-900);
+letter-spacing: 1px;
+line-height: 1;
+}
+.logo-text-bot {
+font-size: 9px;
+letter-spacing: 1.5px;
+color: #777;
+}
+.hamburger {
+width: 40px;
+height: 40px;
+background: var(--brand-100);
+border: none;
+border-radius: 8px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 5px;
+cursor: pointer;
+}
+.hamburger span {
+width: 20px;
+height: 2px;
+background: var(--brand-800);
+border-radius: 2px;
+}
+/* Mobile Menu Overlay */
+.mobile-menu {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: var(--brand-50);
+z-index: 200;
+flex-direction: column;
+padding: 24px;
+}
+.mobile-menu.active {
+display: flex;
+}
+.menu-close {
+align-self: flex-end;
+font-size: 28px;
+border: none;
+background: none;
+color: var(--brand-800);
+cursor: pointer;
+}
+.menu-links {
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+text-align: center;
+}
+.menu-links a {
+font-family: 'Cormorant Garamond', serif;
+font-size: 24px;
+color: var(--brand-900);
+text-decoration: none;
+}
+/* Hero Section */
+.hero {
+padding: 40px 20px;
+text-align: center;
+max-width: 800px;
+margin: 0 auto;
+}
+.tagline {
+display: inline-block;
+background: var(--brand-100);
+color: var(--brand-600);
+font-weight: 600;
+font-size: 11px;
+letter-spacing: 1.5px;
+padding: 6px 14px;
+border-radius: 20px;
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+.hero h1 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 34px;
+color: var(--brand-900);
+line-height: 1.2;
+margin-bottom: 16px;
+font-weight: 500;
+}
+.hero p {
+color: #666;
+font-size: 14px;
+margin-bottom: 24px;
+line-height: 1.6;
+}
+.btn-group {
+display: flex;
+flex-direction: column;
+gap: 12px;
+max-width: 320px;
+margin: 0 auto;
+}
+.btn-primary {
+background: var(--brand-800);
+color: white;
+padding: 14px 24px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 500;
+font-size: 14px;
+border: none;
+cursor: pointer;
+box-shadow: 0 4px 12px rgba(74, 44, 29, 0.2);
+display: inline-block;
+}
+.btn-secondary {
+background: transparent;
+color: var(--brand-800);
+padding: 14px 24px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 500;
+font-size: 14px;
+border: 1px solid var(--brand-800);
+display: inline-block;
+}
+/* Masters Section */
+.section-title {
+text-align: center;
+margin: 40px 0 20px;
+}
+.section-title span {
+font-size: 11px;
+letter-spacing: 2px;
+color: var(--brand-600);
+text-transform: uppercase;
+font-weight: 600;
+}
+.section-title h2 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 28px;
+color: var(--brand-900);
+margin-top: 4px;
+}
+.masters-grid {
+max-width: 1100px;
+margin: 0 auto;
+padding: 0 20px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 24px;
+}
+.master-card {
+background: #fff;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+border: 1px solid var(--brand-100);
+cursor: pointer;
+transition: transform 0.3s, box-shadow 0.3s;
+text-decoration: none;
+color: inherit;
+display: block;
+}
+.master-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.master-img-wrapper {
+width: 100%;
+height: 380px;
+background-color: var(--brand-100);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+.master-img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+background-color: var(--brand-100);
+display: block;
+}
+.master-info {
+padding: 16px;
+}
+.master-role {
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+color: var(--brand-600);
+font-weight: 700;
+}
+.master-name {
+font-family: 'Cormorant Garamond', serif;
+font-size: 24px;
+color: var(--brand-900);
+margin: 4px 0 8px;
+font-weight: 600;
+}
+.master-desc {
+font-size: 13px;
+color: #666;
+margin-bottom: 12px;
+line-height: 1.4;
+}
+.click-hint {
+font-size: 12px;
+font-weight: 600;
+color: var(--brand-800);
+display: flex;
+align-items: center;
+gap: 4px;
+}
+/* Price Section */
+.price-section {
+padding: 40px 20px;
+max-width: 800px;
+margin: 0 auto;
+}
+.price-item {
+background: #fff;
+padding: 16px 20px;
+border-radius: 12px;
+margin-bottom: 12px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: 1px solid var(--brand-100);
+}
+.price-title {
+font-weight: 600;
+color: var(--brand-900);
+font-size: 14px;
+}
+.price-desc {
+font-size: 12px;
+color: #888;
+}
+.price-cost {
+font-family: 'Cormorant Garamond', serif;
+font-size: 18px;
+font-weight: 700;
+color: var(--brand-800);
+white-space: nowrap;
+}
+/* Floating Contact Buttons */
+.floating-buttons {
+position: fixed;
+bottom: 24px;
+right: 20px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+z-index: 99999;
+}
+.float-btn {
+width: 56px;
+height: 56px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+text-decoration: none;
+color: white;
+font-size: 26px;
+transition: transform 0.2s, box-shadow 0.2s;
+cursor: pointer;
+border: 2px solid #fff;
+}
+.float-btn:active {
+transform: scale(0.92);
+}
+.float-wa {
+background: #25D366;
+}
+.float-ig {
+background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+/* Master Single Page Overlay */
+.master-page {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: var(--brand-50);
+z-index: 300;
+overflow-y: auto;
+padding: 20px;
+}
+.back-btn {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: var(--brand-100);
+color: var(--brand-900);
+border: none;
+padding: 10px 18px;
+border-radius: 20px;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+margin-bottom: 20px;
+}
+.hidden {
+display: none !important;
+}
+footer {
+text-align: center;
+padding: 30px 20px;
+border-top: 1px solid var(--brand-200);
+margin-top: 40px;
+font-size: 12px;
+color: #888;
+}
+</style>
 </head>
 <body>
-
-    <!-- Header Navigation -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <div class="logo-avatar">BH</div>
-                <div>
-                    <div class="logo-text-top">Сұлулық салоны</div>
-                    <div class="logo-title">BEAUTY HOME</div>
-                    <div class="logo-text-bot">EST. 2008 • ЭКИБАСТУЗ</div>
-                </div>
-            </a>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="menu-close" onclick="toggleMenu()">✕</button>
-        <div class="menu-links">
-            <a href="#about" onclick="toggleMenu()">О нас</a>
-            <a href="#masters" onclick="toggleMenu()">Мастера</a>
-            <a href="#services" onclick="toggleMenu()">Услуги и цены</a>
-            <a href="https://wa.me/77763039000" target="_blank" style="color: var(--brand-600); font-weight: 600;">Записаться в WhatsApp</a>
-        </div>
-    </div>
-
-    <!-- Main Site Content Container -->
-    <div id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="about">
-            <span class="tagline">Салон красоты в Экибастузе</span>
-            <h1>Ваша естественная эстетика и безупречный уход</h1>
-            <p>Уютная атмосфера, лучшие мастера и премиальный сервис. Мы подчеркнем вашу индивидуальность и подарим минуты истинного наслаждения.</p>
-            <div class="btn-group">
-                <a href="https://wa.me/77763039000?text=Здравствуйте!%20Хочу%20записаться%20на%20процедуру" target="_blank" class="btn-primary">Записаться на процедуру</a>
-                <a href="https://2gis.kz/ekibastuz" target="_blank" class="btn-secondary">📍 Мы на 2GIS</a>
-            </div>
-        </section>
-
-        <!-- Masters Section -->
-        <section id="masters">
-            <div class="section-title">
-                <span>Наша Команда</span>
-                <h2>Мастера салона Beauty Home</h2>
-                <p style="font-size: 12px; color: #777; margin-top: 4px;">Нажмите на мастера, чтобы открыть его личную страницу</p>
-            </div>
-
-            <div class="masters-grid">
-                <!-- Inga -->
-                <a href="#master-inga" class="master-card" onclick="openMasterPage('inga'); return false;">
-                    <div class="master-img-wrapper">
-                        <img src="1000378873.jpg" alt="Инга" class="master-img" onerror="this.onerror=null; this.src='inga.jpg';">
-                    </div>
-                    <div class="master-info">
-                        <div class="master-role">Лэшмейкер</div>
-                        <div class="master-name">Инга</div>
-                        <div class="master-desc">Наращивание и ламинирование ресниц. Подберет идеальный изгиб и объем.</div>
-                        <span class="click-hint">Подробнее и цены →</span>
-                    </div>
-                </a>
-
-                <!-- Fatima -->
-                <a href="#master-fatima" class="master-card" onclick="openMasterPage('fatima'); return false;">
-                    <div class="master-img-wrapper">
-                        <img src="1000378874.jpg" alt="Фатима" class="master-img" onerror="this.onerror=null; this.src='fatima.jpg';">
-                    </div>
-                    <div class="master-info">
-                        <div class="master-role">Косметология & Массаж</div>
-                        <div class="master-name">Фатима</div>
-                        <div class="master-desc">Аппаратная косметология, RF-лифтинг и расслабляющий уход за кожей.</div>
-                        <span class="click-hint">Подробнее и цены →</span>
-                    </div>
-                </a>
-
-                <!-- Anna -->
-                <a href="#master-anna" class="master-card" onclick="openMasterPage('anna'); return false;">
-                    <div class="master-img-wrapper">
-                        <img src="1000378875.jpg" alt="Анна" class="master-img" onerror="this.onerror=null; this.src='anna.jpg';">
-                    </div>
-                    <div class="master-info">
-                        <div class="master-role">Мастер Шугаринга</div>
-                        <div class="master-name">Анна</div>
-                        <div class="master-desc">Сахарная депиляция всех зон. Гладкая кожа, комфортная процедура.</div>
-                        <span class="click-hint">Подробнее и цены →</span>
-                    </div>
-                </a>
-
-                <!-- Gulhan -->
-                <a href="#master-gulhan" class="master-card" onclick="openMasterPage('gulhan'); return false;">
-                    <div class="master-img-wrapper">
-                        <img src="1000378872.jpg" alt="Гульхан" class="master-img" onerror="this.onerror=null; this.src='gulhan.jpg';">
-                    </div>
-                    <div class="master-info">
-                        <div class="master-role">Мастер Ногтевого Сервиса</div>
-                        <div class="master-name">Гульхан</div>
-                        <div class="master-desc">Аккуратный маникюр, укрепление и эстетичное покрытие.</div>
-                        <span class="click-hint">Подробнее и цены →</span>
-                    </div>
-                </a>
-
-                <!-- Aliya -->
-                <a href="#master-aliya" class="master-card" onclick="openMasterPage('aliya'); return false;">
-                    <div class="master-img-wrapper">
-                        <img src="1000378876.jpg" alt="Алия" class="master-img" onerror="this.onerror=null; this.src='aliya.jpg';">
-                    </div>
-                    <div class="master-info">
-                        <div class="master-role">Уход за волосами</div>
-                        <div class="master-name">Алия</div>
-                        <div class="master-desc">Глубокое восстановление волос, СПА-процедуры и уход.</div>
-                        <span class="click-hint">Подробнее и цены →</span>
-                    </div>
-                </a>
-
-                <!-- Rinata -->
-                <a href="#master-rinata" class="master-card" onclick="openMasterPage('rinata'); return false;">
-                    <div class="master-img-wrapper">
-                        <img src="1000378877.jpg" alt="Рината" class="master-img" onerror="this.onerror=null; this.src='rinata.jpg';">
-                    </div>
-                    <div class="master-info">
-                        <div class="master-role">Маникюр & Педикюр</div>
-                        <div class="master-name">Рината</div>
-                        <div class="master-desc">Аппаратный и комбинированный маникюр, smart-педикюр.</div>
-                        <span class="click-hint">Подробнее и цены →</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- General Services & Prices Section -->
-        <section class="price-section" id="services">
-            <div class="section-title">
-                <span>Прайс-лист</span>
-                <h2>Популярные Услуги</h2>
-            </div>
-
-            <div class="price-item">
-                <div>
-                    <div class="price-title">Маникюр с покрытием Gel-Lak</div>
-                    <div class="price-desc">Комбинированный маникюр + выравнивание</div>
-                </div>
-                <div class="price-cost">от 6 000 ₸</div>
-            </div>
-
-            <div class="price-item">
-                <div>
-                    <div class="price-title">Smart-Педикюр</div>
-                    <div class="price-desc">Полная обработка стоп и пальчиков</div>
-                </div>
-                <div class="price-cost">от 8 000 ₸</div>
-            </div>
-
-            <div class="price-item">
-                <div>
-                    <div class="price-title">Наращивание ресниц (Классика / 2D)</div
+<!-- Header Navigation -->
+<header>
+<div class="header-container">
+<a href="#" class="logo">
+<div class="logo-avatar">BH</div>
+<div>
+<div class="logo-text-top">Сұлулық салоны</div>
+<div class="logo-title">BEAUTY HOME</div>
+<div class="logo-text-bot">EST. 2008 • ЭКИБАСТУЗ</div>
+</div>
+</a>
+<button class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</header>
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+<button class="menu-close" onclick="toggleMenu()">✕</button>
+<div class="menu-links">
+<a href="#about" onclick="toggleMenu()">О нас</a>
+<a href="#masters" onclick="toggleMenu()">Мастера</a>
+<a href="#services" onclick="toggleMenu()">Услуги и цены</a>
+<a href="https://wa.me/77763039000" target="_blank" style="color: var(--brand-600); font-weight: 600;">Записаться в WhatsApp</a>
+</div>
+</div>
+<!-- Main Site Content Container -->
+<div id="main-content">
+<!-- Hero Section -->
+<section class="hero" id="about">
+<span class="tagline">Салон красоты в Экибастузе</span>
+<h1>Ваша естественная эстетика и безупречный уход</h1>
+<p>Уютная атмосфера, лучшие мастера и премиальный сервис. Мы подчеркнем вашу индивидуальность и подарим минуты истинного наслаждения.</p>
+<div class="btn-group">
+<a href="https://wa.me/77763039000?text=Здравствуйте!%20Хочу%20записаться%20на%20процедуру" target="_blank" class="btn-primary">Записаться на процедуру</a>
+<a href="https://2gis.kz/ekibastuz" target="_blank" class="btn-secondary">📍 Мы на 2GIS</a>
+</div>
+</section>
+<!-- Masters Section -->
+<section id="masters">
+<div class="section-title">
+<span>Наша Команда</span>
+<h2>Мастера салона Beauty Home</h2>
+<p style="font-size: 12px; color: #777; margin-top: 4px;">Нажмите на мастера, чтобы открыть его личную страницу</p>
+</div>
+<div class="masters-grid">
+<!-- Inga -->
+<a href="#master-inga" class="master-card" onclick="openMasterPage('inga');">
+<div class="master-img-wrapper">
+<img src="1000378873.jpg" alt="Инга" class="master-img" onerror="this.onerror=null; this.src='inga.jpg';">
+</div>
+<div class="master-info">
+<div class="master-role">Лэшмейкер</div>
+<div class="master-name">Инга</div>
+<div class="master-desc">Наращивание и ламинирование ресниц. Подберет идеальный изгиб и объем.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</a>
+<!-- Fatima -->
+<a href="#master-fatima" class="master-card" onclick="openMasterPage('fatima');">
+<div class="master-img-wrapper">
+<img src="1000378874.jpg" alt="Фатима" class="master-img" onerror="this.onerror=null; this.src='fatima.jpg';">
+</div>
+<div class="master-info">
+<div class="master-role">Косметология & Массаж</div>
+<div class="master-name">Фатима</div>
+<div class="master-desc">Аппаратная косметология, RF-лифтинг и расслабляющий уход за кожей.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</a>
+<!-- Anna -->
+<a href="#master-anna" class="master-card" onclick="openMasterPage('anna');">
+<div class="master-img-wrapper">
+<img src="1000378875.jpg" alt="Анна" class="master-img" onerror="this.onerror=null; this.src='anna.jpg';">
+</div>
+<div class="master-info">
+<div class="master-role">Мастер Шугаринга</div>
+<div class="master-name">Анна</div>
+<div class="master-desc">Сахарная депиляция всех зон. Гладкая кожа, комфортная процедура.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</a>
+<!-- Gulhan -->
+<a href="#master-gulhan" class="master-card" onclick="openMasterPage('gulhan');">
+<div class="master-img-wrapper">
+<img src="1000378872.jpg" alt="Гульхан" class="master-img" onerror="this.onerror=null; this.src='gulhan.jpg';">
+</div>
+<div class="master-info">
+<div class="master-role">Мастер Ногтевого Сервиса</div>
+<div class="master-name">Гульхан</div>
+<div class="master-desc">Аккуратный маникюр, укрепление и эстетичное покрытие.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</a>
+<!-- Aliya -->
+<a href="#master-aliya" class="master-card" onclick="openMasterPage('aliya');">
+<div class="master-img-wrapper">
+<img src="1000378876.jpg" alt="Алия" class="master-img" onerror="this.onerror=null; this.src='aliya.jpg';">
+</div>
+<div class="master-info">
+<div class="master-role">Уход за волосами</div>
+<div class="master-name">Алия</div>
+<div class="master-desc">Глубокое восстановление волос, СПА-процедуры и уход.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</a>
+<!-- Rinata -->
+<a href="#master-rinata" class="master-card" onclick="openMasterPage('rinata');">
+<div class="master-img-wrapper">
+<img src="1000378877.jpg" alt="Рината" class="master-img" onerror="this.onerror=null; this.src='rinata.jpg';">
+</div>
+<div class="master-info">
+<div class="master-role">Маникюр & Педикюр</div>
+<div class="master-name">Рината</div>
+<div class="master-desc">Аппаратный и комбинированный маникюр, smart-педикюр.</div>
+<span class="click-hint">Подробнее и цены →</span>
+</div>
+</a>
+</div>
+</section>
+<!-- General Services & Prices Section -->
+<section class="price-section" id="services">
+<div class="section-title">
+<span>Прайс-лист</span>
+<h2>Популярные Услуги</h2>
+</div>
+<div class="price-item">
+<div>
+<div class="price-title">Маникюр с покрытием Gel-Lak</div>
+<div class="price-desc">Комбинированный маникюр + выравнивание</div>
+</div>
+<div class="price-cost">от 6 000 ₸</div>
+</div>
+<div class="price-item">
+<div>
+<div class="price-title">Smart-Педикюр</div>
+<div class="price-desc">Полная обработка стоп и пальчиков</div>
+</div>
+<div class="price-cost">от 8 000 ₸</div>
+</div>
+<div class="price-item">
+<div>
+<div class="price-title">Наращивание ресниц (Классика / 2D)</div>
+<div class="price-desc">Премиум материалы, гипоаллергенный клей</div>
+</div>
+<div class="price-cost">от 7 000 ₸</div>
+</div>
+<div class="price-item">
+<div>
+<div class="price-title">Шугаринг (Комплекс)</div>
+<div class="price-desc">Глубокое бикини + подмышки + ноги</div>
+</div>
+<div class="price-cost">от 9 000 ₸</div>
+</div>
+</section>
+<footer>
+<p>© 2026 BEAUTY HOME Salons. Экибастуз.</p>
+</footer>
+</div>
+<!-- Master Individual Fullscreen Profile Page -->
+<div id="master-page" class="master-page hidden">
+<button class="back-btn" onclick="closeMasterPage()">← Назад ко всем мастерам</button>
+<div id="master-page-content" style="max-width: 600px; margin: 0 auto;"></div>
+</div>
+<!-- Floating Action Buttons for Quick Contact -->
+<div class="floating-buttons">
+<a href="https://instagram.com" target="_blank" class="float-btn float-ig" title="Instagram">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+</a>
+<a href="https://wa.me/77763039000?text=Здравствуйте!%20Хочу%20записаться" target="_blank" class="float-btn float-wa" title="WhatsApp">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.099 4.019 4.142-1.085z"/></svg>
+</a>
+</div>
+<!-- Interactive Scripts -->
+<script>
+const mastersData = {
+inga: {
+name: 'Инга',
+role: 'Лэшмейкер',
+img: '1000378873.jpg',
+fallbackImg: 'inga.jpg',
+desc: 'Опыт работы более 5 лет. Индивидуальный подбор эффекта, изгиба и длины под вашу форму глаз. Используются гипоаллергенные материалы премиум-класса.',
+prices: [
+{ name: 'Классическое наращивание', price: '7 000 ₸' },
+{ name: 'Наращивание 2D / 3D', price: '9 000 ₸' },
+{ name: 'Ламинирование ресниц + окрашивание', price: '6 000 ₸' },
+{ name: 'Снятие чужой работы', price: '1 500 ₸' }
+]
+},
+fatima: {
+name: 'Фатима',
+role: 'Косметология & Массаж',
+img: '1000378874.jpg',
+fallbackImg: 'fatima.jpg',
+desc: 'Дипломированный косметолог-эстетист. Чистки лица, профессиональные уходы, RF-лифтинг и массажные техники омоложения.',
+prices: [
+{ name: 'Комбинированная чистка лица', price: '12 000 ₸' },
+{ name: 'RF-лифтинг лица', price: '10 000 ₸' },
+{ name: 'Скульптурный массаж лица', price: '8 000 ₸' },
+{ name: 'Альгинатная маска (уход)', price: '4 000 ₸' }
+]
+},
+anna: {
+name: 'Анна',
+role: 'Мастер Шугаринга',
+img: '1000378875.jpg',
+fallbackImg: 'anna.jpg',
+desc: 'Бережная и максимально деликатная сахарная депиляция. Использование профессиональной косметики до и после процедуры.',
+prices: [
+{ name: 'Глубокое бикини', price: '5 500 ₸' },
+{ name: 'Ноги полностью', price: '6 000 ₸' },
+{ name: 'Подмышечные впадины', price: '2 000 ₸' },
+{ name: 'Комплекс (Бикини + Подмышки + Ноги)', price: '11 000 ₸' }
+]
+},
+gulhan: {
+name: 'Гульхан',
+role: 'Мастер Ногтевого Сервиса',
+img: '1000378872.jpg',
+fallbackImg: 'gulhan.jpg',
+desc: 'Мастер с чувством стиля. Качественное выравнивание ногтевой пластины, стойкое покрытие гель-лаком и трендовые дизайны.',
+prices: [
+{ name: 'Маникюр + покрытие Gel-Lak', price: '6 000 ₸' },
+{ name: 'Наращивание ногтей', price: '9 000 ₸' },
+{ name: 'Укрепление гелем / акригелем', price: '2 000 ₸' },
+{ name: 'Дизайн ногтей (1 ноготь)', price: '300 ₸' }
+]
+},
+aliya: {
+name: 'Алия',
+role: 'Уход за волосами',
+img: '1000378876.jpg',
+fallbackImg: 'aliya.jpg',
+desc: 'Специалист по здоровью и красоте ваших волос. Лечебные СПА-процедуры, холодное восстановление и тонирование.',
+prices: [
+{ name: 'СПА-уход и восстановление волос', price: '8 000 ₸' },
+{ name: 'Стрижка кончиков + укладка', price: '4 500 ₸' },
+{ name: 'Пилинг кожи головы + уход', price: '6 000 ₸' }
+]
+},
+rinata: {
+name: 'Рината',
+role: 'Маникюр & Педикюр',
+img: '1000378877.jpg',
+fallbackImg: 'rinata.jpg',
+desc: 'Эксперт аппаратного педикюра (Smart) и чистейшего комбинированного маникюра. 100% стерильность и безопасность.',
+prices: [
+{ name: 'Smart-Педикюр с покрытием', price: '9 000 ₸' },
+{ name: 'Smart-Педикюр без покрытия (обработка стоп)', price: '7 000 ₸' },
+{ name: 'Комбинированный маникюр + гель-лак', price: '6 500 ₸' }
+]
+}
+};
+function toggleMenu() {
+const menu = document.getElementById('mobileMenu');
+menu.classList.toggle('active');
+}
+function openMasterPage(masterKey) {
+const m = mastersData[masterKey];
+if (!m) return;
+let pricesHTML = m.prices.map(p => <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ddd; font-size: 14px;"> <span style="font-weight: 500; color: #333;">${p.name}</span> <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--brand-800); font-size: 18px;">${p.price}</span> </div>).join('');
+document.getElementById('master-page-content').innerHTML = `
+<div style="display: flex; gap: 20px; flex-direction: column;">
+<div style="width: 100%; height: 380px; background: var(--brand-100); border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+<img src="${m.img}" onerror="this.onerror=null; this.src='${m.fallbackImg}';" style="width: 100%; height: 100%; object-fit: contain;">
+</div>
+<div>
+<div style="color: var(--brand-600); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">${m.role}</div>
+<h2 class="font-serif" style="font-size: 32px; color: var(--brand-900); margin: 4px 0 12px;">Мастер {m.name}</h2>
+<p style="margin-bottom: 24px; color: #555; font-size: 14px; line-height: 1.6;">{m.desc}</p>
+<h3 class="font-serif" style="font-size: 22px; color: var(--brand-900); margin-bottom: 12px;">Услуги и прайс-лист мастера:</h3>
+<div style="margin-bottom: 25px; background: #fff; padding: 16px; border-radius: 14px; border: 1px solid var(--brand-200);">
+${pricesHTML}
+</div>
+<a href="https://wa.me/77763039000?text=Здравствуйте!%20Хочу%20записаться%20к%20мастеру%20${encodeURIComponent(m.name)}" target="_blank" class="btn-primary" style="width: 100%; text-align: center; padding: 14px; font-size: 15px; display: block; text-decoration: none;">
+💬 Записаться к мастеру ${m.name} в WhatsApp
+</a>
+</div>
+</div>
+`;
+document.getElementById('main-content').classList.add('hidden');
+document.getElementById('master-page').classList.remove('hidden');
